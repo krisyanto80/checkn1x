@@ -24,4 +24,5 @@ case $CHOICE in
   "5")
     /usr/sbin/reboot
     ;;
-    
+ esac
+ 
