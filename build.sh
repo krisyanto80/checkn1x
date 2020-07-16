@@ -52,6 +52,7 @@ EOF
 cd work/chroot/root/
 curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb
 # Copy scripts to /usr/bin/
+cd ../../../
 cp odysseyn1x odyseyra1n /usr/bin/
 
 if [[ $ARCH = "amd64" ]]; then
