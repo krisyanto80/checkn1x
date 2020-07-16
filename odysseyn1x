@@ -1,29 +1,27 @@
 #!/bin/bash
-while true; do
-  whiptail --nocancel --title "odysseyn1x" --menu "Choose and option" 16 40 5 \
-          "1" "Checkra1n"   \
-          "2" "Odysseyra1n"  \
-          "3" "Change the keyboard layout" \
-          "4" "Shut down" \
-          "5" "Reboot" \
+whiptail --nocancel --title "odysseyn1x" --menu "Choose and option" 16 40 5 \
+        "1" "Checkra1n"   \
+        "2" "Odysseyra1n"  \
+        "3" "Change the keyboard layout" \
+        "4" "Shut down" \
+        "5" "Reboot" \
 
-  case $CHOICE in
-    "1")
-      /usr/bin/checkra1n
-      ;;
-    "2")
-      cd /root/
-      /usr/bin/odysseyra1n
-      ;;
-    "3")
-      dpkg-reconfigure keyboard-configuration
-      service keyboard-setup restart
-      ;;
-    "4")
-      /usr/sbin/shutdown now
-      ;;
-    "5")
-      /usr/sbin/reboot
-      ;;
-  esac
-done
+case $CHOICE in
+  "1")
+    /usr/bin/checkra1n
+    ;;
+  "2")
+    cd /root/
+    /usr/bin/odysseyra1n
+    ;;
+  "3")
+    dpkg-reconfigure keyboard-configuration
+    service keyboard-setup restart
+    ;;
+  "4")
+    /usr/sbin/shutdown now
+    ;;
+  "5")
+    /usr/sbin/reboot
+    ;;
+    
