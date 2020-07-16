@@ -1,5 +1,5 @@
 #!/bin/bash
-whiptail --nocancel --title "odysseyn1x" --menu "Choose and option" 16 40 5 \
+whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 5 \
         "1" "Checkra1n"   \
         "2" "Odysseyra1n"  \
         "3" "Change the keyboard layout" \
