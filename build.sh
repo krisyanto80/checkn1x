@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # odysseyn1x build script
-# Forked from https://github.com/asineth/checkn1x
+# Forked by raspberryenvoie from https://github.com/asineth/checkn1x
 #
 # VERSION="1.0"
 # ARCH="amd64" # can be set to amd64, i686
