@@ -1,21 +1,30 @@
 #!/bin/bash
-CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 4 \
-  "1" "Checkra1n"   \
-  "2" "Odysseyra1n"  \
-  "3" "Shut down" \
-  "4" "Reboot" 3>&1 1>&2 2>&3)
-case $CHOICE in
-  1)
-    /usr/bin/checkra1n
-    ;;
-  2)
-    cd /root/
-    /usr/bin/odysseyra1n
-    ;;
-  3)
-    /usr/sbin/shutdown now
-    ;;
-  4)
-    /usr/sbin/reboot
-    ;;
-esac
+while true; do
+  CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 5 \
+    "1" "Checkra1n"   \
+    "2" "Odysseyra1n"  \
+    "3" "Shut down" \
+    "4" "Reboot" \
+    "5" "Exit" 3>&1 1>&2 2>&3)
+  case $CHOICE in
+    1)
+      clear
+      /usr/bin/checkra1n
+      ;;
+    2)
+      clear
+      cd /root/
+      /usr/bin/odysseyra1n
+      ;;
+    3)
+      /usr/sbin/shutdown now
+      ;;
+    4)
+      /usr/sbin/reboot
+      ;;
+    5)
+      clear
+      break
+      ;;
+  esac
+done
