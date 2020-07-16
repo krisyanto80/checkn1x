@@ -27,7 +27,8 @@ cp /etc/resolv.conf work/chroot/etc
 [ $ARCH = "i686" ] && _ARCH="686" # debian's 32-bit kernels are suffixed "-686"
 cat << EOF | chroot work/chroot /bin/bash
 export DEBIAN_FRONTEND=noninteractive
-apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd 
+apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd
+apt install -y libusbmuxd-tools console-data console-setup console-locales keyboard-configuration
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 rm -f /etc/mtab
@@ -45,7 +46,6 @@ rm -rf /usr/share/man/*
 rm -rf /usr/share/info/*
 rm -rf /usr/share/icons/*
 rm -rf /usr/lib/modules/*
-apt install -y libusbmuxd-tools console-data console-setup console-locales keyboard-configuration
 exit
 EOF
 
