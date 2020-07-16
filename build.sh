@@ -28,7 +28,7 @@ cp /etc/resolv.conf work/chroot/etc
 cat << EOF | chroot work/chroot /bin/bash
 export DEBIAN_FRONTEND=noninteractive
 apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd 
-apt install -y libusbmuxd-tools keyboard-configuration
+apt install -y --no-install-recommends libusbmuxd-tools console-data console-setup console-locales keyboard-configuration
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 rm -f /etc/mtab
@@ -40,7 +40,7 @@ rm -rf /var/log/*
 rm -rf /var/cache/*
 rm -rf /var/backups/*
 rm -rf /var/lib/apt/*
-rm -rf /var/lib/dpkg/*
+#rm -rf /var/lib/dpkg/*
 rm -rf /usr/share/doc/*
 rm -rf /usr/share/man/*
 rm -rf /usr/share/info/*
