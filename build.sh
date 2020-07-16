@@ -7,10 +7,11 @@ VERSION="1.0.6"
 ARCH="amd64" # can be set to amd64, i686
 CRSOURCE_amd64="https://assets.checkra.in/downloads/linux/cli/x86_64/607faa865e90e72834fce04468ae4f5119971b310ecf246128e3126db49e3d4f/checkra1n"
 CRSOURCE_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d9f0daa8a265362b65a33ce503b3088528cc2839544e166d4c6/checkra1n"
+ora1nSOURCE="https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb"
 
 set -e -u -v
 apt update
-apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates
+apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
@@ -23,7 +24,7 @@ cp /etc/resolv.conf work/chroot/etc
 [ $ARCH = "i686" ] && _ARCH="686" # debian's 32-bit kernels are suffixed "-686"
 cat << EOF | chroot work/chroot /bin/bash
 export DEBIAN_FRONTEND=noninteractive
-apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd
+apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools keyboard-configuration
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 rm -f /etc/mtab
@@ -43,13 +44,17 @@ rm -rf /usr/share/icons/*
 rm -rf /usr/lib/modules/*
 exit
 EOF
+# Download resources for Odysseyra1n
+curl -L -O work/chroot/root/ $ora1nSOURCE
+# Copy scripts to /usr/bin/
+cp odysseyn1x odyseyra1n /usr/bin/
+
 wget -O work/chroot/usr/bin/checkra1n $CRSOURCE
 chmod +x work/chroot/usr/bin/checkra1n
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf
 [Service]
-ExecStart=
-ExecStart=-/sbin/agetty --noissue --autologin root %I 
+ExecStart=-/sbin/agetty --noissue --autologin root %I
 Type=idle
 EOF
 cat << EOF > work/iso/boot/grub/grub.cfg
@@ -58,8 +63,8 @@ linux /boot/vmlinuz boot=live quiet
 initrd /boot/initrd.img
 boot
 EOF
-echo "checkn1x" > work/chroot/etc/hostname
-echo "checkra1n" > work/chroot/root/.bashrc
+echo "odysseyn1x" > work/chroot/etc/hostname
+echo "/usr/bin/odysseyn1x" > work/chroot/root/.bashrc
 rm -f work/chroot/etc/resolv.conf
 umount -lf work/chroot/proc
 umount -lf work/chroot/sys
