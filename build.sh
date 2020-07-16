@@ -27,12 +27,12 @@ cp /etc/resolv.conf work/chroot/etc
 [ $ARCH = "i686" ] && _ARCH="686" # debian's 32-bit kernels are suffixed "-686"
 cat << EOF | chroot work/chroot /bin/bash
 export DEBIAN_FRONTEND=noninteractive
-apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools psmisc
+apt install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools openssh-client psmisc
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 rm -f /etc/mtab
 rm -f /etc/fstab
-# rm -f /etc/ssh/ssh_host*
+rm -f /etc/ssh/ssh_host*
 rm -f /root/.wget-hsts
 rm -f /root/.bash_history
 rm -rf /var/log/*
