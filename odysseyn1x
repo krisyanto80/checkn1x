@@ -1,10 +1,12 @@
 #!/bin/bash
+CHOICE=$(
 whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 4 \
-        "1" "Checkra1n"   \
-        "2" "Odysseyra1n"  \
-        "3" "Change the keyboard layout" \
-        "4" "Shut down" \
-        "5" "Reboot" \
+  "1" "Checkra1n"   \
+  "2" "Odysseyra1n"  \
+  "3" "Change the keyboard layout" \
+  "4" "Shut down" \
+  "5" "Reboot" \
+)
 
 case $CHOICE in
   "1")
