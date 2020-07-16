@@ -32,7 +32,7 @@ sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 rm -f /etc/mtab
 rm -f /etc/fstab
-rm -f /etc/ssh/ssh_host*
+# rm -f /etc/ssh/ssh_host*
 rm -f /root/.wget-hsts
 rm -f /root/.bash_history
 rm -rf /var/log/*
