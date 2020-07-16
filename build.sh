@@ -64,7 +64,8 @@ chmod +x work/chroot/usr/bin/checkra1n
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf
 [Service]
-ExecStart=-/sbin/agetty --noissue --autologin root %I
+ExecStart=
+ExecStart=-/sbin/agetty --noissue --autologin root %I 
 Type=idle
 EOF
 cat << EOF > work/iso/boot/grub/grub.cfg
