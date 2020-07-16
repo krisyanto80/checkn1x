@@ -13,7 +13,7 @@ while true; do
       ;;
     "2")
       cd /root/
-      /usr/bin/odyseyra1n
+      /usr/bin/odysseyra1n
       ;;
     "3")
       dpkg-reconfigure keyboard-configuration
