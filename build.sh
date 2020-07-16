@@ -14,7 +14,7 @@ apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
-if [[ $ARCH = "i686" ]]; then
+if [ $ARCH = "i686" ]; then
   _ARCH="i386" # debian's 32-bit repos are "i386"
 else
   _ARCH="amd64" # debian's 64-bit repos are "amd64"
@@ -55,7 +55,7 @@ curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_15
 cd ../../../
 cp odysseyn1x odyseyra1n /usr/bin/
 
-if [[ $ARCH = "amd64" ]]; then
+if [ $ARCH = "amd64" ]; then
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_amd64
 else
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_i686
