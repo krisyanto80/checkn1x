@@ -54,6 +54,8 @@ curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_15
 # Copy scripts to /usr/bin/
 cd ../../../
 cp odysseyn1x odysseyra1n work/chroot/usr/bin/
+chmod +x work/chroot/usr/bin/odysseyn1x
+chmod +x work/chroot/usr/bin/odysseyra1n
 
 if [ $ARCH = "amd64" ]; then
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_amd64
