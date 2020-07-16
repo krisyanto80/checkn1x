@@ -1,10 +1,10 @@
-# checkn1x
+# odysseyn1x
 
-Linux-based distribution for jailbreaking iOS devices w/ checkra1n.
+Linux-based distribution for jailbreaking iOS devices w/ checkra1n and odysseyra1n.
 
 ## Downloads
 
-Downloads are available under [releases](https://github.com/asineth/checkn1x/releases).
+Downloads are available under [releases](https://github.com/raspberryenvoie/odysseyn1x/releases).
 
 ## Usage
 
