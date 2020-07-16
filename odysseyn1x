@@ -1,5 +1,5 @@
 #!/bin/bash
-whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 5 \
+whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 4 \
         "1" "Checkra1n"   \
         "2" "Odysseyra1n"  \
         "3" "Change the keyboard layout" \
@@ -15,13 +15,9 @@ case $CHOICE in
     /usr/bin/odysseyra1n
     ;;
   "3")
-    dpkg-reconfigure keyboard-configuration
-    service keyboard-setup restart
-    ;;
-  "4")
     /usr/sbin/shutdown now
     ;;
-  "5")
+  "4")
     /usr/sbin/reboot
     ;;
  esac
