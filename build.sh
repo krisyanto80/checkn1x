@@ -15,7 +15,11 @@ apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
-[ $ARCH = "i686" ] && _ARCH="i386" # debian's 32-bit repos are "i386"
+if [[ $ARCH = "i686" ]]; then
+  _ARCH="i386" # debian's 32-bit repos are "i386"
+else
+  _ARCH="amd64" # debian's 64-bit repos are "amd64"
+fi
 debootstrap --arch=$_ARCH unstable work/chroot
 mount --bind /proc work/chroot/proc
 mount --bind /sys work/chroot/sys
