@@ -1,4 +1,3 @@
-![](https://raw.githubusercontent.com/asineth/checkn1x/master/icon.png)
 # checkn1x
 
 Linux-based distribution for jailbreaking iOS devices w/ checkra1n.
