@@ -1,26 +1,21 @@
 #!/bin/bash
-CHOICE=$(
-whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 4 \
+CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "Choose and option" 16 40 4 \
   "1" "Checkra1n"   \
   "2" "Odysseyra1n"  \
-  "3" "Change the keyboard layout" \
-  "4" "Shut down" \
-  "5" "Reboot" \
-)
-
+  "3" "Shut down" \
+  "4" "Reboot" 3>&1 1>&2 2>&3)
 case $CHOICE in
-  "1")
+  1)
     /usr/bin/checkra1n
     ;;
-  "2")
+  2)
     cd /root/
     /usr/bin/odysseyra1n
     ;;
-  "3")
+  3)
     /usr/sbin/shutdown now
     ;;
-  "4")
+  4)
     /usr/sbin/reboot
     ;;
- esac
- 
+esac
