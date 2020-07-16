@@ -9,7 +9,7 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 ## Usage
 
 * If you are unsure which one to download, use the ``amd64`` one.
-1. Download [Etcher](https://etcher.io)
+1. Download [balenaEtcher](https://www.balena.io/etcher/)
 2. Open the ``.iso`` you downloaded.
 3. Write it to your USB drive.
 4. Reboot and enter your BIOS's boot menu.
