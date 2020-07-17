@@ -3,8 +3,6 @@
 # odysseyn1x build script
 # Forked by raspberryenvoie from https://github.com/asineth/checkn1x
 #
-# VERSION="1.0"
-# ARCH="amd64" # can be set to amd64, i686
 CRSOURCE_amd64="https://assets.checkra.in/downloads/linux/cli/x86_64/607faa865e90e72834fce04468ae4f5119971b310ecf246128e3126db49e3d4f/checkra1n"
 CRSOURCE_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d9f0daa8a265362b65a33ce503b3088528cc2839544e166d4c6/checkra1n"
 
