@@ -118,7 +118,4 @@ else
 	ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "zsh /var/root/odyssey-device-deploy.sh"
 	echo "All Done!"
 	killall iproxy
-	echo 'Open sileo, do all the updates and install libhooker package.'
-	echo 'Then reboot manually, and re-jailbreak.'
-	read -p 'Press enter to quit'
 fi
