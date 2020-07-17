@@ -13,6 +13,8 @@ while true; do
       ;;
     2)
       clear
+      echo 'Connect an iDevice to this computer.'
+      read -p 'Press enter to continue'
       cd /root/
       /usr/bin/odysseyra1n
       echo 'Open sileo, do all the updates and install libhooker package.'
