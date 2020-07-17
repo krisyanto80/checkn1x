@@ -19,6 +19,7 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 
 To change the version of checkra1n, edit ``CRSOURCE_amd64`` and ``CRSOURCE_i686``.
 
+Execute one of these commands to build odysseyn1x.
 ```sh
 # debian-based systems
 sudo ./build.sh
