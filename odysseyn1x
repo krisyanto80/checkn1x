@@ -15,6 +15,9 @@ while true; do
       clear
       cd /root/
       /usr/bin/odysseyra1n
+      echo 'Open sileo, do all the updates and install libhooker package.'
+	    echo 'Then reboot manually, and re-jailbreak.'
+	    read -p 'Press enter to quit'
       ;;
     3)
       /usr/sbin/shutdown now
