@@ -103,7 +103,7 @@ echo 'rm odyssey-device-deploy.sh' >> odyssey-device-deploy.sh
 # Removed resources download, using pre-downloaded resources instead
 # echo "Downloading Resources..."
 # curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb
-clear
+# clear
 if [[ ! "${ARM}" = yes ]]; then
 	echo "Copying Files to your device"
 	echo "Default password is: alpine"
