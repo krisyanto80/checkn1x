@@ -107,6 +107,7 @@ echo 'rm odyssey-device-deploy.sh' >> odyssey-device-deploy.sh
 if [[ ! "${ARM}" = yes ]]; then
 	echo "Copying Files to your device"
 	echo "Default password is: alpine"
+	echo '/!\ The keyboard layout is in American Qwerty.'
 	scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500-ssh.tar.gz bootstrap_1600-ssh.tar.gz migration org.coolstar.sileo_1.8.1_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/
 	clear
 fi
