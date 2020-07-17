@@ -17,9 +17,7 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 
 ## Building
 
-Edit ``ARCH`` and the corresponding ``CRSOURCE``.
-
-Add something to the ``VERSION`` string if you want to redistribute your image, i.e. ``1.0.6-foo``.
+To change the version of checkra1n, edit ``CRSOURCE_amd64`` and ``CRSOURCE_i686``.
 
 ```sh
 # debian-based systems
