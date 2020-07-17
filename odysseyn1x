@@ -17,7 +17,7 @@ while true; do
       read -p 'Press enter to continue'
       cd /root/
       /usr/bin/odysseyra1n
-      echo 'Open sileo, do all the updates and install libhooker package.'
+      echo 'Open Sileo, do all the updates and install libhooker package.'
       echo 'Then reboot manually, and re-jailbreak.'
       read -p 'Press enter to quit'
       ;;
