@@ -36,4 +36,5 @@ docker run -it -v $(pwd):/app --rm --privileged debian:sid "cd /app && /app/buil
 - Asineth for [checkn1x](https://github.com/asineth/checkn1x)
 - The Checkra1n team for [checkra1n](https://checkra.in)
 - CoolStar for [odysseyra1n](https://github.com/coolstar/Odyssey-bootstrap)
+- [Diatrus](https://github.com/Diatrus) for [Procursus bootstrap](https://github.com/ProcursusTeam/Procursus)
 - [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept
