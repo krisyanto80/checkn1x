@@ -1,6 +1,6 @@
 # odysseyn1x
 
-Linux-based distribution for jailbreaking iOS devices w/ checkra1n and odysseyra1n.
+Linux-based distribution for jailbreaking iOS devices w/ checkra1n and installing odysseyra1n.
 
 ## Downloads
 
@@ -14,6 +14,11 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 3. Write it to your USB drive.
 4. Reboot and enter your BIOS's boot menu.
 5. Select the USB drive.
+
+### Install odysseyra1n
+1. Restore rootfs using the checkra1n app.
+2. Jailbreak using checkra1n, but don’t open the loader.
+3. Install odysseyra1n.
 
 ## Building
 
