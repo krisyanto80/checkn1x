@@ -20,6 +20,10 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 2. Jailbreak using checkra1n, but don’t open the loader.
 3. Install odysseyra1n.
 
+Notes:\
+Odysseyra1n isn’t a jailbreak, it’s a modern replacement bootstrap (basically the code that makes your tweaks run) from Coolstar that offers better speed and stability, for some also greater battery life and Sileo is installed instead of aging Cydia.\
+You don’t have to reinstall odysseyra1n after each reboot, just re-jailbreak using checkra1n.
+
 ## Building
 
 To change the version of checkra1n, edit ``CRSOURCE_amd64`` and ``CRSOURCE_i686``.
