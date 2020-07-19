@@ -36,7 +36,7 @@ if [ $ARCH = "i686" ]; then
 else
   _ARCH="amd64" # debian's 64-bit repos are "amd64"
 fi
-debootstrap --arch=$_ARCH unstable work/chroot
+debootstrap --arch=$_ARCH stable work/chroot
 mount --bind /proc work/chroot/proc
 mount --bind /sys work/chroot/sys
 mount --bind /dev work/chroot/dev
