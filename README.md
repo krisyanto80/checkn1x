@@ -8,7 +8,7 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 
 ## Usage
 
-* If you are unsure which one to download, use the ``amd64`` one (works for AMD and Intel 64 bits CPUs).
+* If you are unsure which one to download, use the ``amd64`` one (works for AMD and Intel 64-bits CPUs).
 1. Download [balenaEtcher](https://www.balena.io/etcher/)
 2. Open the ``.iso`` you downloaded.
 3. Write it to your USB drive.
