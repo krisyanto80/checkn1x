@@ -19,6 +19,8 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 1. Restore rootfs using the checkra1n app.
 2. Jailbreak using checkra1n, but don’t open the loader.
 3. Install odysseyra1n.
+4. ⚠️ OpenSSH is installed by default.\
+Please change the root password to prevent the possibility of unsavory people remotely logging into your device using the default password.
 
 Notes:\
 Odysseyra1n isn’t a jailbreak, it’s a modern replacement bootstrap (basically the code that makes your tweaks run) from Coolstar that offers better speed and stability, for some also greater battery life and Sileo is installed instead of aging Cydia.\
