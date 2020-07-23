@@ -38,7 +38,7 @@ sudo ./build.sh
 # docker containers
 docker run -it -v $(pwd):/app --rm --privileged debian:sid "cd /app && /app/build.sh"
 ```
-## Credit to
+## Credits
 - Asineth for [checkn1x](https://github.com/asineth/checkn1x)
 - The Checkra1n team for [checkra1n](https://checkra.in)
 - CoolStar for [odysseyra1n](https://github.com/coolstar/Odyssey-bootstrap)
