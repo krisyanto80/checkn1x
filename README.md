@@ -23,9 +23,7 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 Please change the root password to prevent the possibility of unsavory people remotely logging into your device using the default password.
 
 Notes:\
-Odysseyra1n isn’t a jailbreak, it’s a modern replacement bootstrap (basically the code that makes your tweaks run) from Coolstar that offers better speed and stability, for some also greater battery life and Sileo is installed instead of aging Cydia.\
-You don’t have to reinstall odysseyra1n after each reboot, just re-jailbreak using checkra1n.
-
+Odysseyra1n isn’t a jailbreak, it’s a modern replacement bootstrap (basically a set of compiled tools) made by Coolstar that offers better speed and stability using libhooker as injection and hooking library and some users say they have better battery life too. It installs Sileo instead of aging Cydia.
 ## Building
 
 To change the version of checkra1n, edit ``CRSOURCE_amd64`` and ``CRSOURCE_i686``.
