@@ -8,6 +8,8 @@ Downloads are available under [releases](https://github.com/raspberryenvoie/odys
 
 ## Usage
 
+**Make an [iCloud/iTunes backup](https://support.apple.com/en-us/HT203977) before using odysseyn1x, so that you can go back if something goes wrong.**
+
 * If you are unsure which one to download, use the ``amd64`` one (works for AMD and Intel 64-bit CPUs).
 1. Download [balenaEtcher](https://www.balena.io/etcher/)
 2. Open the ``.iso`` you downloaded.
