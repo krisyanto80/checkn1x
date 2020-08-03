@@ -4,7 +4,7 @@ while true; do
   CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "" 12 40 5 \
     "1" "Checkra1n"   \
     "2" "Odysseyra1n"  \
-    "3" "Setup projectsandcastle" \
+    "3" "Setup Project Sandcastle" \
     "4" "Start Android" \
     "5" "Shut down" \
     "6" "Reboot" \
