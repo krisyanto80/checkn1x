@@ -1,5 +1,5 @@
 <h1 align="center">odysseyn1x</h1>
-<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and projectsandcastle.</h3>
+<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and Project Sandcastle:.</h3>
 
 -------
 
@@ -23,13 +23,13 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 3. Install odysseyra1n.
 4. OpenSSH is installed by default, **please change the default root password**.
 
-### projectsandcastle
-**What's projectsandcastle:** It's Android for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
+### Project Sandcastle:
+**What's Project Sandcastle:** It's Android for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
 
-1. Select "Setup projectsandcastle"
+1. Select "Setup Project Sandcastle"
 2. Then choose "Start Android"
 
-When projectsandcastle has been installed, simply choose "Start Android" to boot back into Android.
+When Project Sandcastle has been installed, simply choose "Start Android" to boot back into Android.
 
 **Removing it:**
 If you wish to remove the Android NAND image and reclaim the space you can login via SSH to your checkra1ned device and mount the final volume and remove the nand file. To do this run `ls /dev/disk0s1s*` and find the last volume. You can verify it's the right volume by running `/System/Library/Filesystems/apfs.fs/apfs.util -p VOLUME_HERE` and if it says Android, that's the correct one. Once you have the volume path you can then run as root (type `su`):
@@ -56,6 +56,6 @@ sudo ./build.sh
 - The Checkra1n team for [checkra1n](https://checkra.in)
 - CoolStar for [odysseyra1n](https://github.com/coolstar/Odyssey-bootstrap)
 - [The Procursus team](https://github.com/ProcursusTeam/) for [Procursus](https://github.com/ProcursusTeam/Procursus)
-- [Corellium](https://github.com/corellium) for [projectsandcastle](https://projectsandcastle.org)
+- [Corellium](https://github.com/corellium) for [Project Sandcastle](https://projectsandcastle.org)
 - [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an iso with odysseyra1n
-- [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate projectsandcastle
+- [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle
