@@ -62,7 +62,7 @@ rm -rf /usr/lib/modules/*
 exit
 EOF
 
-# Download resources for Odysseyra1n
+# Download resources for odysseyra1n
 cd work/chroot/root/
 curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb
 # Copy scripts to /usr/bin/
@@ -78,7 +78,7 @@ rm -rf android-sandcastle.zip
 cd ../../../
 git clone https://github.com/corellium/projectsandcastle.git
 cd projectsandcastle/loader/
-make
+gcc load-linux.c -o load-linux -lusb-1.0
 chmod +x load-linux
 cd ../../
 mv projectsandcastle/loader/load-linux work/chroot/root/android-sandcastle/
