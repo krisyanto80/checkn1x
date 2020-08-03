@@ -15,7 +15,7 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 3. Open balenaEtcher and write the `.iso` you downloaded to your USB drive.
 4. Reboot, enter your BIOS's boot menu and select the USB drive.
 
-### Odysseyra1n
+### odysseyra1n
 **What's odysseyra1n:** Odysseyra1n is a modern replacement bootstrap (basically a set of compiled tools) made by Coolstar that offers better speed and stability using libhooker as injection and hooking library and some users have better battery life too. It installs Sileo instead of aging Cydia.
 
 1. Restore rootfs using the checkra1n app.
