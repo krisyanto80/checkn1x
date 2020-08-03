@@ -1,5 +1,5 @@
 <h1 align="center">odysseyn1x</h1>
-<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and Project Sandcastle:.</h3>
+<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and Project Sandcastle.</h3>
 
 -------
 
