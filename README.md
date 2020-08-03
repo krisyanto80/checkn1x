@@ -34,13 +34,13 @@ When projectsandcastle has been installed, simply choose "Start Android" to boot
 **Removing it:**
 If you wish to remove the Android NAND image and reclaim the space you can login via SSH to your checkra1ned device and mount the final volume and remove the nand file. To do this run `ls /dev/disk0s1s*` and find the last volume. You can verify it's the right volume by running `/System/Library/Filesystems/apfs.fs/apfs.util -p VOLUME_HERE` and if it says Android, that's the correct one. Once you have the volume path you can then run:
 ```
-mkdir -p /tmp/mnt\
-mount -t apfs VOLUME_HERE /tmp/mnt\
-rm -rf /tmp/mnt/nand\
-umount /tmp/mnt\
-sync\
-And that will reclaim the space for you.
+mkdir -p /tmp/mnt
+mount -t apfs VOLUME_HERE /tmp/mnt
+rm -rf /tmp/mnt/nand
+umount /tmp/mnt
+sync
 ```
+And that will reclaim the space for you.
 
 ## Building
 
