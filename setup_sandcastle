@@ -1,0 +1,31 @@
+#!/bin/bash
+clear
+echo 'Connect a jailbroken iDevice with checkra1n'
+read -p 'Press enter to continue'
+cd /root/android-sandcastle/
+iproxy 4444 44 > /dev/null 2>&1 &
+clear
+echo 'Default password is: alpine'
+echo '/!\ The keyboard layout is in American Qwerty'
+scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh
+if [[ $? -ne 0 ]]; then
+	echo 'Failed to copy setup script'
+	killall iproxy
+  read -p 'Press enter to quit'
+	exit
+fi
+clear
+echo 'Default password is: alpine'
+echo '/!\ The keyboard layout is in American Qwerty'
+ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"
+if [[ $? -ne 0 ]]; then
+	echo 'Setup failed'
+	killall iproxy
+  read -p 'Press enter to quit'
+	exit
+fi
+clear
+echo 'Setup was successful!'
+killall iproxy
+echo 'Select "Start Android" to boot into Android'
+read -p 'Press enter to quit'

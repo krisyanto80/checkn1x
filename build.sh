@@ -1,8 +1,7 @@
 #!/bin/sh
-#
 # odysseyn1x build script
-# Forked by raspberryenvoie from https://github.com/asineth/checkn1x
-#
+# Forked by raspberryenvoie from asineth/checkn1x
+
 CRSOURCE_amd64="https://assets.checkra.in/downloads/linux/cli/x86_64/607faa865e90e72834fce04468ae4f5119971b310ecf246128e3126db49e3d4f/checkra1n"
 CRSOURCE_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d9f0daa8a265362b65a33ce503b3088528cc2839544e166d4c6/checkra1n"
 
@@ -11,10 +10,8 @@ while [ -z $VERSION ]; do
 done
 echo "odysseyn1x version $VERSION"
 echo ''
-echo '1) amd64'
-echo '2) i686'
 until [ "$ARCH" = "amd64" ] || [ "$ARCH" = "i686" ]; do
-  read -r -p 'Build odysseyn1x for amd64 or i686? Type 1 for amd64 or 2 for i686, default: amd64. ' input_arch
+  read -r -p 'Amd64 or i686? Type 1 for amd64 or 2 for i686, default: amd64. ' input_arch
   if [ "$input_arch" = 1 ]; then
     ARCH="amd64"
   elif [ "$input_arch" = 2 ]; then
@@ -27,7 +24,7 @@ echo "You chose $ARCH."
 
 set -e -u -v
 apt update
-apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl
+apt install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
@@ -71,8 +68,21 @@ curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_15
 # Copy scripts to /usr/bin/
 cd ../../../
 cp odysseyn1x odysseyra1n work/chroot/usr/bin/
-chmod +x work/chroot/usr/bin/odysseyn1x
-chmod +x work/chroot/usr/bin/odysseyra1n
+
+# Download and compile ressources for projectsandcastle
+cp setup_sandcastle start_sandcastle work/chroot/usr/bin/
+cd work/chroot/root/
+curl -L -O https://assets.checkra.in/downloads/sandcastle/dff60656db1bdc6a250d3766813aa55c5e18510694bc64feaabff88876162f3f/android-sandcastle.zip
+unzip android-sandcastle.zip
+rm -rf android-sandcastle.zip
+cd ../../../
+git clone https://github.com/corellium/projectsandcastle.git
+cd projectsandcastle/loader/
+make
+chmod +x load-linux
+cd ../../
+mv projectsandcastle/loader/load-linux work/chroot/root/android-sandcastle/
+rm -rf projectsandcastle/
 
 if [ $ARCH = "amd64" ]; then
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_amd64
@@ -84,11 +94,13 @@ mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty --noissue --autologin root %I 
+ExecStart=-/sbin/agetty --noissue --autologin root %I
 Type=idle
 EOF
 cat << EOF > work/iso/boot/grub/grub.cfg
 insmod all_video
+echo 'odysseyn1x-$VERSION'
+echo 'Made with <3 by raspberryenvoie'
 linux /boot/vmlinuz boot=live quiet
 initrd /boot/initrd.img
 boot
