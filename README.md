@@ -32,7 +32,7 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 When projectsandcastle has been installed, simply choose "Start Android" to boot back into Android.
 
 **Removing it:**
-If you wish to remove the Android NAND image and reclaim the space you can login via SSH to your checkra1ned device and mount the final volume and remove the nand file. To do this run `ls /dev/disk0s1s*` and find the last volume. You can verify it's the right volume by running `/System/Library/Filesystems/apfs.fs/apfs.util -p VOLUME_HERE` and if it says Android, that's the correct one. Once you have the volume path you can then run:
+If you wish to remove the Android NAND image and reclaim the space you can login via SSH to your checkra1ned device and mount the final volume and remove the nand file. To do this run `ls /dev/disk0s1s*` and find the last volume. You can verify it's the right volume by running `/System/Library/Filesystems/apfs.fs/apfs.util -p VOLUME_HERE` and if it says Android, that's the correct one. Once you have the volume path you can then run as root (type `su`):
 ```
 mkdir -p /tmp/mnt
 mount -t apfs VOLUME_HERE /tmp/mnt
