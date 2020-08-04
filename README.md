@@ -26,7 +26,7 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 #### Changing the default passwords
 
 OpenSSH is installed by default, so please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.\
-***Default/old password: `alpine`***
+*Default/old password: `alpine`*
 
 1. Install Newterm in Sileo.
 2. Open it and type `passwd mobile` to change the mobile user's password.
