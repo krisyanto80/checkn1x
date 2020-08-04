@@ -21,7 +21,17 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 1. Restore rootfs using the checkra1n app.
 2. Jailbreak using checkra1n, but don’t open the loader.
 3. Install odysseyra1n.
-4. OpenSSH is installed by default, **please change the default root password**.
+4. OpenSSH is installed by default, **please change the default mobile/root passwords**.
+
+#### Changing the default passwords
+
+OpenSSH is installed by default, so please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.\
+***Default/old password: `alpine`***
+
+1. Install Newterm in Sileo.
+2. Open it and type `passwd mobile` to change the mobile user's password.
+3. Then, execute `su` to login as root.
+4. After that, run `passwd` to change its password.
 
 ### Project Sandcastle:
 **What's Project Sandcastle:** It's Android for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
