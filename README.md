@@ -15,7 +15,7 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 3. Open balenaEtcher and write the `.iso` you downloaded to your USB drive.
 4. Reboot, enter your BIOS's boot menu and select the USB drive.
 
-### odysseyra1n
+## odysseyra1n
 **What's odysseyra1n:** Odysseyra1n is a modern replacement bootstrap (basically a set of compiled tools) made by Coolstar that offers better speed and stability using libhooker as injection and hooking library and some users have better battery life too. It installs Sileo instead of aging Cydia.
 
 1. Restore rootfs using the checkra1n app.
@@ -23,7 +23,7 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 3. Install odysseyra1n.
 4. OpenSSH is installed by default, **please change the default mobile/root passwords**.
 
-#### Changing the default passwords
+### Changing the default passwords
 
 OpenSSH is installed by default, so please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.\
 *Default/old password: `alpine`*
@@ -33,7 +33,7 @@ OpenSSH is installed by default, so please change the mobile/root passwords to p
 3. Then, execute `su` to login as root.
 4. After that, run `passwd` to change its password.
 
-### Project Sandcastle:
+## Project Sandcastle
 **What's Project Sandcastle:** It's Android for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
 
 1. Select "Setup Project Sandcastle"
