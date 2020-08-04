@@ -23,7 +23,7 @@ while true; do
       /usr/bin/odysseyra1n
       echo 'Open Sileo, do all the updates and install libhooker package.'
       echo 'Then reboot manually, and re-jailbreak.'
-      echo '/!\ OpenSSH is installed by default. Please change the root password to prevent the possibility of unsavory people remotely logging into your device using the default password.'
+      echo '/!\ OpenSSH has been installed. Please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.'
       read -p 'Press enter to quit'
       ;;
     3)
