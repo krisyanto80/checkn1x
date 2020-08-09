@@ -69,19 +69,28 @@ curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_15
 cd ../../../
 cp odysseyn1x odysseyra1n work/chroot/usr/bin/
 
-# Download and compile ressources for projectsandcastle
-cp setup_sandcastle start_sandcastle work/chroot/usr/bin/
+# Copy projectsandcastle scripts
+cp projectsandcastle_scripts/* work/chroot/usr/bin/
 cd work/chroot/root/
+# Set up Android Sandcastle
 curl -L -O https://assets.checkra.in/downloads/sandcastle/dff60656db1bdc6a250d3766813aa55c5e18510694bc64feaabff88876162f3f/android-sandcastle.zip
 unzip android-sandcastle.zip
 rm -rf android-sandcastle.zip
+cd android-sandcastle/
+rm -rf iproxy *.dylib load-linux.mac *.sh
+cd ../
+# Set up Linux Sandcastle
+curl -L -O https://assets.checkra.in/downloads/sandcastle/0175ae56bcba314268d786d1239535bca245a7b126d62a767e12de48fd20f470/linux-sandcastle.zip
+unzip linux-sandcastle.zip
+rm -rf linux-sandcastle.zip linux-sandcastle/load-linux.mac
+# Compile load-linux
 cd ../../../
 git clone https://github.com/corellium/projectsandcastle.git
 cd projectsandcastle/loader/
 gcc load-linux.c -o load-linux -lusb-1.0
 chmod +x load-linux
 cd ../../
-mv projectsandcastle/loader/load-linux work/chroot/root/android-sandcastle/
+mv projectsandcastle/loader/load-linux work/chroot/usr/bin/
 rm -rf projectsandcastle/
 
 if [ $ARCH = "amd64" ]; then

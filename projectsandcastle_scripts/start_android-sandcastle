@@ -15,6 +15,6 @@ while true; do
 done
 sleep 5
 echo 'Starting Android...'
-./load-linux Android.lzma dtbpack
+/usr/bin/load-linux Android.lzma dtbpack
 killall checkra1n
 read -p 'Press enter to quit'
