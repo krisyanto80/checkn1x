@@ -34,14 +34,12 @@ OpenSSH is installed by default, so please change the mobile/root passwords to p
 4. After that, run `passwd` to change its password.
 
 ## Project Sandcastle
-**What's Project Sandcastle:** It's Android for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
-
-1. Select "Setup Project Sandcastle"
-2. Then choose "Start Android"
-
+**What's Project Sandcastle:** It's Android and Linux for the iPhone. Projectsandcastle is in beta so not everything is fully supported. [More information](https://projectsandcastle.org)
+### Installing Android
+Select Project Sandcastle > Setup Project Sandcastle > Start Android.
 When Project Sandcastle has been installed, simply choose "Start Android" to boot back into Android.
 
-**Removing it:**
+**Removing Android:**
 If you wish to remove the Android NAND image and reclaim the space you can login via SSH to your checkra1ned device and mount the final volume and remove the nand file. To do this run `ls /dev/disk0s1s*` and find the last volume. You can verify it's the right volume by running `/System/Library/Filesystems/apfs.fs/apfs.util -p VOLUME_HERE` and if it says Android, that's the correct one. Once you have the volume path you can then run as root (type `su`):
 ```
 mkdir -p /tmp/mnt
@@ -51,6 +49,9 @@ umount /tmp/mnt
 sync
 ```
 And that will reclaim the space for you.
+
+### Booting Linux
+Select "Project Sandcastle", then "Start Linux".
 
 ## Building
 
@@ -68,4 +69,4 @@ sudo ./build.sh
 - [The Procursus team](https://github.com/ProcursusTeam/) for [Procursus](https://github.com/ProcursusTeam/Procursus)
 - [Corellium](https://github.com/corellium) for [Project Sandcastle](https://projectsandcastle.org)
 - [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an iso with odysseyra1n
-- [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle
+- [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle (Android and Linux for the iPhone)
