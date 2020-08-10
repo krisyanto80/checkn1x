@@ -96,6 +96,7 @@ else
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_i686
 fi
 chmod +x work/chroot/usr/bin/checkra1n
+
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf
 [Service]
