@@ -62,16 +62,12 @@ rm -rf /usr/lib/modules/*
 exit
 EOF
 
+cp scripts/* work/chroot/usr/bin/ # Copy all scripts to /usr/bin
+
 # Download resources for odysseyra1n
 cd work/chroot/root/
 curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb
-# Copy scripts to /usr/bin/
-cd ../../../
-cp odysseyn1x odysseyra1n work/chroot/usr/bin/
 
-# Copy projectsandcastle scripts
-cp projectsandcastle_scripts/* work/chroot/usr/bin/
-cd work/chroot/root/
 # Set up Android Sandcastle
 curl -L -O https://assets.checkra.in/downloads/sandcastle/dff60656db1bdc6a250d3766813aa55c5e18510694bc64feaabff88876162f3f/android-sandcastle.zip
 unzip android-sandcastle.zip
@@ -93,6 +89,7 @@ cd ../../
 mv projectsandcastle/loader/load-linux work/chroot/usr/bin/
 rm -rf projectsandcastle/
 
+# Download checkra1n for the corresponding arch
 if [ $ARCH = "amd64" ]; then
   wget -O work/chroot/usr/bin/checkra1n $CRSOURCE_amd64
 else
