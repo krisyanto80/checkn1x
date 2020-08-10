@@ -1,5 +1,5 @@
 <h1 align="center">odysseyn1x</h1>
-<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n, and Project Sandcastle.</h3>
+<h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and Project Sandcastle.</h3>
 
 -------
 
@@ -68,5 +68,5 @@ sudo ./build.sh
 - CoolStar for [odysseyra1n](https://github.com/coolstar/Odyssey-bootstrap)
 - [The Procursus Team](https://github.com/ProcursusTeam/) for [Procursus](https://github.com/ProcursusTeam/Procursus)
 - [Corellium](https://github.com/corellium) for [Project Sandcastle](https://projectsandcastle.org)
-- [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an ISO with Odysseyra1n
+- [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an ISO with odysseyra1n
 - [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle (Android and Linux for the iPhone)
