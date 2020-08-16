@@ -24,6 +24,8 @@ If you are unsure which one to download, the `amd64` iso will work in most cases
 3. Install odysseyra1n.
 4. OpenSSH is installed by default, **please change the default mobile/root passwords**.
 
+Note: You don’t have to reinstall odysseyra1n after each reboot, just re-jailbreak using checkra1n.
+
 ### Changing the default passwords
 
 OpenSSH is installed by default, so please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.\
