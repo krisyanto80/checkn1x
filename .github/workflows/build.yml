@@ -14,19 +14,25 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Build odysseyn1x
+    - name: Build odysseyn1x amd64
       run: |
         sed -i "/Forked by raspberryenvoie/aVERSION=$(<version)" build.sh
         sed -i "/Forked by raspberryenvoie/aARCH='amd64'" build.sh
         sudo ./build.sh
+        du -h odysseyn1x-*amd64.iso
+        
+    - name: Build odysseyn1x i686
+      run: |
         sudo rm -rf work/
         sed -i "s/ARCH='amd64'/ARCH='i686'/g" build.sh
         sudo ./build.sh
+        du -h odysseyn1x-*-i686.iso
 
     - name: Generate SHA-256
       run: |
         sha256sum odysseyn1x-*-amd64.iso >> ReleaseNotes.md
         sha256sum odysseyn1x-*-i686.iso >> ReleaseNotes.md
+        cat ReleaseNotes.md
 
     - name: Publish GitHub Release
       uses: ncipollo/release-action@v1
