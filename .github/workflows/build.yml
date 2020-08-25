@@ -16,17 +16,17 @@ jobs:
 
     - name: Build odysseyn1x
       run: |
-      sed -i "/Forked by raspberryenvoie/aVERSION=$(<version)" build.sh
-      sed -i "/Forked by raspberryenvoie/aARCH='amd64'" build.sh
-      ./build.sh
-      rm -rf work/
-      sed -i "s/ARCH='amd64'/ARCH='i686'/g" build.sh
-      ./build.sh
+        sed -i "/Forked by raspberryenvoie/aVERSION=$(<version)" build.sh
+        sed -i "/Forked by raspberryenvoie/aARCH='amd64'" build.sh
+        ./build.sh
+        rm -rf work/
+        sed -i "s/ARCH='amd64'/ARCH='i686'/g" build.sh
+        ./build.sh
 
     - name: Generate SHA-256
-      sha256sum odysseyn1x-*-amd64.iso >> ReleaseNotes.md
-      sha256sum odysseyn1x-*-i686.iso >> ReleaseNotes.md
-      
+        sha256sum odysseyn1x-*-amd64.iso >> ReleaseNotes.md
+        sha256sum odysseyn1x-*-i686.iso >> ReleaseNotes.md
+
     - name: Publish GitHub Release
       uses: ncipollo/release-action@v1
       with:
