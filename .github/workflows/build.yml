@@ -24,6 +24,7 @@ jobs:
         ./build.sh
 
     - name: Generate SHA-256
+      run: |
         sha256sum odysseyn1x-*-amd64.iso >> ReleaseNotes.md
         sha256sum odysseyn1x-*-i686.iso >> ReleaseNotes.md
 
