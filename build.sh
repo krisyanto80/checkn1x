@@ -8,8 +8,6 @@ CRSOURCE_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d
 while [ -z $VERSION ]; do
   read -r -p 'What is the version? ' VERSION
 done
-echo "odysseyn1x version $VERSION"
-echo ''
 until [ "$ARCH" = "amd64" ] || [ "$ARCH" = "i686" ]; do
   read -r -p 'Amd64 or i686? Type 1 for amd64 or 2 for i686, default: amd64. ' input_arch
   if [ "$input_arch" = 1 ]; then
@@ -20,8 +18,9 @@ until [ "$ARCH" = "amd64" ] || [ "$ARCH" = "i686" ]; do
     ARCH="amd64"
   fi
 done
-echo "You chose $ARCH."
-
+echo ''
+echo "Building odysseyn1x version $VERSION for $ARCH..."
+echo ''
 set -e -u -v
 apt-get update
 apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git
@@ -45,14 +44,14 @@ apt-get install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd 
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 apt-get purge -y acpi acpid aptitude at aspell aspell-en avahi-daemon \
-bash-completion bc bin86 bind9-host ca-certificates console-common console-data \
-console-tools dc debian-faq debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn \
-dhcp dhcp3-client dhcp3-common dictionaries dnsutils doc-debian doc-linux-text \
-eject fdutils file finger foomatic-filters gettext-base groff gnupg gnu-efi grub \
-hplip iamerican ibritish info ispell laptop-detect libavahi-compat-libdnssd1 libc6-amd64 \
-libc6-i686 libgpmg1 manpages mtools mtr-tiny mutt nano netcat net-tools ncurses-term \
-openssl pidentd ppp pppconfig pppoe pppoeconf read-edid reportbug smclient tasksel \
-tcsh traceroute unzip usbutils vim-common vim-tiny wamerican w3m whois zeroinstall-injector zip
+bash-completion bc bin86 bind9-host ca-certificates console-common
+console-data dc debian-faq debian-faq-de debian-faq-fr debian-faq-it \
+debian-faq-zh-cn dnsutils doc-debian eject fdutils file finger foomatic-filters \
+gettext-base groff gnupg gnu-efi hplip iamerican ibritish info ispell \
+laptop-detect libavahi-compat-libdnssd1 manpages mtools mtr-tiny mutt nano \
+netcat net-tools ncurses-term openssl ppp pppconfig pppoe pppoeconf read-edid \
+reportbug tasksel tcsh traceroute unzip usbutils vim-common vim-tiny wamerican \
+w3m whois 0install-core zip
 apt-get autoremove -y
 apt-get clean
 rm -f /etc/mtab
@@ -132,4 +131,4 @@ umount -lf work/chroot/dev
 cp work/chroot/vmlinuz work/iso/boot
 cp work/chroot/initrd.img work/iso/boot
 mksquashfs work/chroot work/iso/live/filesystem.squashfs -noappend -e boot -comp xz -Xbcj x86
-grub-mkrescue −−compress xz -o odysseyn1x-$VERSION-$ARCH.iso work/iso
+grub-mkrescue -o odysseyn1x-$VERSION-$ARCH.iso work/iso --compress=xz
