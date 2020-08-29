@@ -44,6 +44,17 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools openssh-client psmisc
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
+apt-get purge -y acpi acpid aptitude at aspell aspell-en avahi-daemon \
+bash-completion bc bin86 bind9-host ca-certificates console-common console-data \
+console-tools dc debian-faq debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn \
+dhcp dhcp3-client dhcp3-common dictionaries dnsutils doc-debian doc-linux-text \
+eject fdutils file finger foomatic-filters gettext-base groff gnupg gnu-efi grub \
+hplip iamerican ibritish info ispell laptop-detect libavahi-compat-libdnssd1 libc6-amd64 \
+libc6-i686 libgpmg1 manpages mtools mtr-tiny mutt nano netcat net-tools ncurses-term \
+openssl pidentd ppp pppconfig pppoe pppoeconf read-edid reportbug smclient tasksel \
+tcsh traceroute unzip usbutils vim-common vim-tiny wamerican w3m whois zeroinstall-injector zip
+apt-get autoremove -y
+apt-get clean
 rm -f /etc/mtab
 rm -f /etc/fstab
 rm -f /etc/ssh/ssh_host*
