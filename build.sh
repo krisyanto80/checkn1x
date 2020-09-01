@@ -23,7 +23,7 @@ echo "Building odysseyn1x version $VERSION for $ARCH..."
 echo ''
 set -e -u -v
 apt-get update
-apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git
+apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git gcc-multilib
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
@@ -40,7 +40,7 @@ cp /etc/resolv.conf work/chroot/etc
 [ $ARCH = "i686" ] && _ARCH="686" # debian's 32-bit kernels are suffixed "-686"
 cat << EOF | chroot work/chroot /bin/bash
 export DEBIAN_FRONTEND=noninteractive
-apt-get install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools openssh-client psmisc
+apt-get install -y --no-install-recommends linux-image-$_ARCH live-boot usbmuxd libusbmuxd-tools openssh-client sshpass psmisc
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' /etc/initramfs-tools/initramfs.conf
 update-initramfs -u
 apt-get purge -y acpi acpid aptitude at aspell aspell-en avahi-daemon \
@@ -93,7 +93,11 @@ rm -rf linux-sandcastle.zip linux-sandcastle/load-linux.mac
 cd ../../../
 git clone https://github.com/corellium/projectsandcastle.git
 cd projectsandcastle/loader/
-gcc load-linux.c -o load-linux -lusb-1.0
+if [ $ARCH = "i686" ]; then
+  gcc -m32 load-linux.c -o load-linux -lusb-1.0 # Compile for 32-bit
+else
+  gcc load-linux.c -o load-linux -lusb-1.0 # Compile for 64-bit
+fi
 chmod +x load-linux
 cd ../../
 mv projectsandcastle/loader/load-linux work/chroot/usr/bin/
