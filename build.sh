@@ -25,7 +25,7 @@ echo ''
 set -e -u -v
 apt-get update
 apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git gcc-multilib
-[ $ARCH = "i686" ] && sudo apt install -y --no-install-recommends libudev-dev:i386 libusb-1.0-0-dev:i386
+[ $ARCH = "i686" ] && dpkg --add-architecture i386 && apt-get update && apt install -y --no-install-recommends libusb-1.0-0-dev:i386
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
