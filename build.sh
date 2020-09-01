@@ -1,6 +1,7 @@
 #!/bin/sh
 # odysseyn1x build script
 # Forked by raspberryenvoie from asineth/checkn1x
+# This build script has not been tested on 32-bit systems.
 
 CRSOURCE_amd64="https://assets.checkra.in/downloads/linux/cli/x86_64/607faa865e90e72834fce04468ae4f5119971b310ecf246128e3126db49e3d4f/checkra1n"
 CRSOURCE_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d9f0daa8a265362b65a33ce503b3088528cc2839544e166d4c6/checkra1n"
@@ -24,6 +25,7 @@ echo ''
 set -e -u -v
 apt-get update
 apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git gcc-multilib
+[ $ARCH = "i686" ] && sudo apt install -y --no-install-recommends libudev-dev:i386 libusb-1.0-0-dev:i386
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
