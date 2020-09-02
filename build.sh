@@ -24,8 +24,8 @@ echo "Building odysseyn1x version $VERSION for $ARCH..."
 echo ''
 set -e -u -v
 apt-get update
-apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git gcc-multilib
-[ $ARCH = "i686" ] && dpkg --add-architecture i386 && apt-get update && apt install -y --no-install-recommends libusb-1.0-0-dev:i386
+apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl libusb-1.0-0-dev gcc make git
+[ $ARCH = "i686" ] && dpkg --add-architecture i386 && apt-get update && apt install -y --no-install-recommends libusb-1.0-0-dev:i386 gcc-multilib
 mkdir -p work/chroot
 mkdir -p work/iso/live
 mkdir -p work/iso/boot/grub
