@@ -18,7 +18,10 @@ If you are unsure which one to download, the `amd64` ISO will work in most cases
 
 # Odysseyra1n
 ### What's odysseyra1n
-Odysseyra1n is a modern replacement bootstrap (basically a set of compiled tools) made by Coolstar that offers better speed and stability using libhooker as injection and hooking library, and some users have better battery life too. It installs Sileo instead of aging Cydia.
+Odysseyra1n lets you install on a checkra1ned device
+- libhooker, a substrate/substitute alternative built from the ground up by Coolstar with speed and stability in mind,
+- Procursus, an open source and modern bootstrap that aims to provide a large set of consistently up-to-date tools and
+- Sileo instead of aging Cydia.
 
 ### Installing odysseyra1n
 1. Restore rootfs using the ckeckra1n app.
