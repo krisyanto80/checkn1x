@@ -105,7 +105,7 @@ if sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHos
 	killall iproxy
 	echo 'Open Sileo, do all the updates and install the libhooker package.'
 	echo 'Then re-jailbreak your device.'
-	echo "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device throught SSH using the default password.${NC}"
+	echo -e "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device throught SSH using the default password.${NC}"
 	read -p 'Press enter to quit'
 else
 	failed

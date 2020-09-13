@@ -156,7 +156,7 @@ EOF
 # Display booting message
 cat << EOF > work/iso/boot/grub/grub.cfg
 insmod all_video
-echo 'Welcome to odysseyn1x-$VERSION'
+echo 'odysseyn1x-$VERSION'
 echo 'Made with <3 by raspberryenvoie'
 linux /boot/vmlinuz boot=live quiet
 initrd /boot/initrd.img
