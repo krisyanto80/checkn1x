@@ -33,16 +33,16 @@ function android_logo() {
   echo -e "${GREEN}            ###  #######  ###${NC}"
   echo -e "${GREEN}           ###################${NC}"
   echo ''
-  echo -e "${GREEN}     ####  #################### ####${NC}"
-  echo -e "${GREEN}     ####  #################### ####${NC}"
-  echo -e "${GREEN}     ####  #################### ####${NC}"
-  echo -e "${GREEN}     ####  #################### ####${NC}"
-  echo -e "${GREEN}     ####  #################### ####${NC}"
-  echo -e "${GREEN}           ####################${NC}"
+  echo -e "${GREEN}     ####  ################### ####${NC}"
+  echo -e "${GREEN}     ####  ################### ####${NC}"
+  echo -e "${GREEN}     ####  ################### ####${NC}"
+  echo -e "${GREEN}     ####  ################### ####${NC}"
+  echo -e "${GREEN}     ####  ################### ####${NC}"
   echo -e "${GREEN}           ###################${NC}"
-  echo -e "${GREEN}              #####    ####${NC}"
-  echo -e "${GREEN}              #####    ####${NC}"
-  echo -e "${GREEN}               ###     ####${NC}"
+  echo -e "${GREEN}           ###################${NC}"
+  echo -e "${GREEN}              ####     ####${NC}"
+  echo -e "${GREEN}              ####     ####${NC}"
+  echo -e "${GREEN}              ####     ####${NC}"
   echo ''
 }
 

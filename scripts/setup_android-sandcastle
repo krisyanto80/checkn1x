@@ -8,7 +8,7 @@ cd /root/android-sandcastle/
 android_logo
 
 echo 'The keyboard layout is in American Qwerty.'
-echo "Your iDevice's default password is alpine (yours may be different if you changed it)"
+echo "Your iDevice's default password is alpine."
 echo ''
 echo 'Connect a jailbroken iDevice with an internet connection'
 echo ''
