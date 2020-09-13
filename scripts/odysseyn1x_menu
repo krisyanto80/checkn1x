@@ -1,5 +1,8 @@
 #!/bin/bash
+# Load functions and variables
+source /usr/bin/common
 export NEWT_COLORS='root=,black border=white,black window=white,black title=white,black textbox=white,black listbox=white,black'
+
 while true; do
   CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "" 13 40 6 \
     "1" "Checkra1n" \
@@ -7,31 +10,30 @@ while true; do
     "3" "Project Sandcastle" \
     "4" "Shut down" \
     "5" "Reboot" \
-    "6" "Exit" 3>&1 1>&2 2>&3)
+    "6" "Shell" 3>&1 1>&2 2>&3)
   case $CHOICE in
     1)
       clear
       /usr/bin/checkra1n
       ;;
     2)
-      clear
-      echo 'Connect an iDevice to this computer'
-      read -p 'Press enter to continue'
-      clear
-      cd /root/
       /usr/bin/odysseyra1n
-      echo 'Open Sileo, do all the updates and install libhooker package.'
-      echo 'Then reboot manually, and re-jailbreak.'
-      echo '/!\ OpenSSH has been installed. Please change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device using the default password.'
-      read -p 'Press enter to quit'
       ;;
     3)
-      /usr/bin/menu_projectsandcastle
+      /usr/bin/projectsandcastle_menu
       ;;
     4)
+      clear
+      echo -e "${BLUE}I hope you enjoyed using odysseyn1x, see you soon!${NC}\n"
+      odysseyn1x_logo
+      sleep 0.5
       /usr/sbin/shutdown now
       ;;
     5)
+      clear
+      echo -e "${BLUE}I hope you enjoyed using odysseyn1x, see you soon!${NC}\n"
+      odysseyn1x_logo
+      sleep 0.5
       /usr/sbin/reboot
       ;;
     6)

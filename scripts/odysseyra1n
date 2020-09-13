@@ -1,48 +1,27 @@
 #!/bin/bash
-if [ $(uname) = "Darwin" ]; then
-	if [ $(uname -p) = "arm" ] || [ $(uname -p) = "arm64" ]; then
-		echo "It's recommended this script be ran on macOS/Linux with a clean iOS device running checkra1n attached unless migrating from older bootstrap."
-		read -p "Press enter to continue"
-		ARM=yes
-	fi
-fi
+clear
+# Load functions and variables
+source /usr/bin/common
+cd /root/odysseyra1n/
+
+# Show ASCII art
+odysseyra1n_logo
 
 echo "odysseyra1n deployment script"
 echo "(C) 2020, CoolStar. All Rights Reserved"
-
 echo ""
-echo "Before you begin: This script includes experimental migration from older bootstraps to Procursus/Odyssey."
-echo "If you're already jailbroken, you can run this script on the checkra1n device."
-echo "If you'd rather start clean, please Reset System via the Loader app first."
-read -p "Press enter to continue"
+echo 'This script has been modified to work on odysseyn1x.'
+echo ''
+echo 'First restore rootfs using the ckeckra1n app.'
+echo "Then jailbreak using checkra1n, but don’t open the loader."
+echo 'Connect your iDevice to this computer'
+echo ''
+read -p 'Press enter to continue'
 
-# Removed curl installation check, using pre-downloaded files instead
-#if ! which curl >> /dev/null; then
-#	echo "Error: curl not found"
-#	exit 1
-#fi
-if [[ "${ARM}" = yes ]]; then
-	if ! which zsh >> /dev/null; then
-		echo "Error: zsh not found"
-		exit 1
-	fi
-else
-	if which iproxy >> /dev/null; then
-		iproxy 4444 44 >> /dev/null 2>/dev/null &
-	else
-		echo "Error: iproxy not found"
-		exit 1
-	fi
-fi
-# Following not needed: offline and using live usb
-#rm -rf odyssey-tmp
-#mkdir odyssey-tmp
-#cd odyssey-tmp
+iproxy 4444 44 >> /dev/null 2>/dev/null &
 
 echo '#!/bin/zsh' > odyssey-device-deploy.sh
-if [[ ! "${ARM}" = yes ]]; then
-	echo 'cd /var/root' >> odyssey-device-deploy.sh
-fi
+echo 'cd /var/root' >> odyssey-device-deploy.sh
 echo 'if [[ -f "/.bootstrapped" ]]; then' >> odyssey-device-deploy.sh
 echo 'mkdir -p /odyssey && mv migration /odyssey' >> odyssey-device-deploy.sh
 echo 'chmod 0755 /odyssey/migration' >> odyssey-device-deploy.sh
@@ -58,7 +37,6 @@ echo 'else' >> odyssey-device-deploy.sh
 echo 'echo "${VER} not compatible."' >> odyssey-device-deploy.sh
 echo 'exit 1' >> odyssey-device-deploy.sh
 echo 'fi' >> odyssey-device-deploy.sh
-echo 'gzip -d bootstrap_${CFVER}-ssh.tar.gz' >> odyssey-device-deploy.sh
 echo 'mount -uw -o union /dev/disk0s1s1' >> odyssey-device-deploy.sh
 echo 'rm -rf /etc/profile' >> odyssey-device-deploy.sh
 echo 'rm -rf /etc/profile.d' >> odyssey-device-deploy.sh
@@ -100,24 +78,35 @@ echo 'rm bootstrap*.tar*' >> odyssey-device-deploy.sh
 echo 'rm org.coolstar.sileo_1.8.1_iphoneos-arm.deb' >> odyssey-device-deploy.sh
 echo 'rm odyssey-device-deploy.sh' >> odyssey-device-deploy.sh
 
-# Removed resources download, using pre-downloaded resources instead
-#echo "Downloading Resources..."
-#curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb
 clear
-if [[ ! "${ARM}" = yes ]]; then
-	echo "Copying Files to your device"
-	# No need to enter the password, we are using sshpass
-	#echo "Default password is: alpine"
-	sshpass -p 'alpine' scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500-ssh.tar.gz bootstrap_1600-ssh.tar.gz migration org.coolstar.sileo_1.8.1_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/
-	clear
+
+if ! ls ./*.tar > /dev/null 2>&1; then
+	message='Extracting files'
+	whatstep
+	if xz -vd ./*.tar.xz; then
+		successful
+	else
+		failed
+	fi
 fi
-echo "Installing Procursus bootstrap and Sileo on your device"
-if [[ "${ARM}" = yes ]]; then
-	zsh ./odyssey-device-deploy.sh
+
+message='Copying files to your device'
+whatstep
+if sshpass -p 'alpine' scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500-ssh.tar bootstrap_1600-ssh.tar migration org.coolstar.sileo_1.8.1_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/; then
+	successful
 else
-	# No need to enter the password, we are using sshpass
-	#echo "Default password is: alpine"
-	sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "zsh /var/root/odyssey-device-deploy.sh"
-	echo "All Done!"
+	failed
+fi
+
+message='Installing Procursus bootstrap and Sileo on your device'
+whatstep
+if sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "zsh /var/root/odyssey-device-deploy.sh"; then
+	successful
 	killall iproxy
+	echo 'Open Sileo, do all the updates and install the libhooker package.'
+	echo 'Then re-jailbreak your device.'
+	echo "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device throught SSH using the default password.${NC}"
+	read -p 'Press enter to quit'
+else
+	failed
 fi

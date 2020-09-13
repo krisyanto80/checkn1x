@@ -1,12 +1,17 @@
 #!/bin/bash
 clear
+# Load functions and variables
+source /usr/bin/common
 cd /root/linux-sandcastle/
+
+# Show ASCII art
+linux_logo
+
 /usr/bin/checkra1n -cp > pongo_shell.log 2>&1 &
 echo 'Please put your device into DFU mode'
 sleep 1
 while true; do
-  grep "Booting..." pongo_shell.log > /dev/null 2>&1
-  if [[ $? -eq 0 ]]; then
+  if grep 'Booting...' pongo_shell.log > /dev/null 2>&1; then
     echo 'Pongo loaded. Give it a second'
     sleep 2
     break
@@ -14,7 +19,12 @@ while true; do
   sleep 1
 done
 sleep 5
-echo 'Starting Linux...'
-/usr/bin/load-linux Linux.lzma dtbpack
-killall checkra1n
-read -p 'Press enter to quit'
+message='Starting Linux'
+whatstep
+if /usr/bin/load-linux Linux.lzma dtbpack; then
+  successful
+  killall checkra1n
+  read -p 'Press enter to quit'
+else
+  failed
+fi

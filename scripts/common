@@ -1,0 +1,83 @@
+#!/bin/bash
+# Set colors variables
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;36m'
+YELLOW='\033[0;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+BOLD='\033[1;37m'
+
+function whatstep() {
+  echo -e "${BLUE}${message}...${NC}"
+}
+
+function successful() {
+  echo -e "${GREEN}Done ${message,}.${NC}\n"
+}
+
+function failed() {
+  {
+    killall iproxy
+    killall checkra1n
+  }  > /dev/null 2>&1
+  message_uncapitalised="${message,}"
+  echo -e "${RED}Failed to ${message_uncapitalised//ing/}.${NC}"
+  read -p 'Press enter to quit'
+  exit
+}
+
+function android_logo() {
+  echo -e "${GREEN}              #           #${NC}"
+  echo -e "${GREEN}               ###########${NC}"
+  echo -e "${GREEN}            ###  #######  ###${NC}"
+  echo -e "${GREEN}           ###################${NC}"
+  echo ''
+  echo -e "${GREEN}     ####  #################### ####${NC}"
+  echo -e "${GREEN}     ####  #################### ####${NC}"
+  echo -e "${GREEN}     ####  #################### ####${NC}"
+  echo -e "${GREEN}     ####  #################### ####${NC}"
+  echo -e "${GREEN}     ####  #################### ####${NC}"
+  echo -e "${GREEN}           ####################${NC}"
+  echo -e "${GREEN}           ###################${NC}"
+  echo -e "${GREEN}              #####    ####${NC}"
+  echo -e "${GREEN}              #####    ####${NC}"
+  echo -e "${GREEN}               ###     ####${NC}"
+  echo ''
+}
+
+function linux_logo() {
+  echo -e "${YELLOW}                @@@@@@@@@@${NC}"
+  echo -e "${YELLOW}               %@@@@@@@@@@@${NC}"
+  echo -e "${YELLOW}               @ @ @ .@ @@@${NC}"
+  echo -e "${YELLOW}               /@,,,,,,*@@@${NC}"
+  echo -e "${YELLOW}               @%.*.*..*@@@@${NC}"
+  echo -e "${YELLOW}              @@         @@@@${NC}"
+  echo -e "${YELLOW}            @@@           @@@@@${NC}"
+  echo -e "${YELLOW}          ,@@@             *@@@@@${NC}"
+  echo -e "${YELLOW}         @@@@               ,@@@@@${NC}"
+  echo -e "${YELLOW}         @@@@               @@@@@@${NC}"
+  echo -e "${YELLOW}        *,,*@.            ,,@@@@**${NC}"
+  echo -e "${YELLOW}     *,,,,,,,*@@          *,,,,,,,,${NC}"
+  echo -e "${YELLOW}     ,,,,,,,,,,/          ,,,,,,,,..*${NC}"
+  echo -e "${YELLOW}    ,....,,,,,,,,@@, (@@@,,,,...../${NC}"
+  echo -e "${YELLOW}          *,....*        *.....${NC}"
+  echo ''
+}
+
+function odysseyn1x_logo() {
+  echo '  ___   __| |_   _ ___ ___  ___ _   _ _ __ / |_  __'
+  echo ' / _ \ / _` | | | / __/ __|/ _ \ | | | `_ \| \ \/ /'
+  echo '| (_) | (_| | |_| \__ \__ \  __/ |_| | | | | |>  < '
+  echo ' \___/ \__,_|\__, |___/___/\___|\__, |_| |_|_/_/\_\'
+  echo '             |___/              |___/              '
+}
+
+function odysseyra1n_logo() {
+  echo -e "${PURPLE}  ___   __| |_   _ ___ ___  ___ _   _ _ __ __ _/ |_ __  ${NC}"
+  echo -e "${PURPLE} / _ \ / _\` | | | / __/ __|/ _ \ | | | '__/ _\` | | '_ \ ${NC}"
+  echo -e "${PURPLE}| (_) | (_| | |_| \__ \__ \  __/ |_| | | | (_| | | | | |${NC}"
+  echo -e "${PURPLE} \___/ \__,_|\__, |___/___/\___|\__, |_|  \__,_|_|_| |_|${NC}"
+  echo -e "${PURPLE}             |___/              |___/                   ${NC}"
+  echo ''
+}

@@ -1,6 +1,6 @@
 <h1 align="center">odysseyn1x</h1>
 <h3 align="center">Linux-based distro that lets you install checkra1n, odysseyra1n and Project Sandcastle.</h3>
-<p align="center"><img src="https://raw.githubusercontent.com/raspberryenvoie/odysseyn1x/master/logo.png" alt="logo"></p>
+<p align="center"><img src="https://gist.githubusercontent.com/raspberryenvoie/586dbef790b752cabda3c50a0a169f6d/raw/6cb00fdb3b683ab387b8daf20c7ebf796608e6c3/odysseyn1x-logo.png" alt="logo"></p>
 
 -------
 [Here](https://gist.githubusercontent.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/b26d359a2e113d49f0f2ec6ee15501512c663d31/odysseyn1x_screenshot.png) is a screenshot of odysseyn1x.

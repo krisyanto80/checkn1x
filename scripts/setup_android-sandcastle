@@ -1,42 +1,50 @@
 #!/bin/bash
 clear
-echo 'Connect a jailbroken iDevice'
-# Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n and 44 for checkra1n
-until [[ $port = "22" || $port = "44" ]]; do
+# Load functions and variables
+source /usr/bin/common
+cd /root/android-sandcastle/
+
+# Show ASCII art
+android_logo
+
+echo 'The keyboard layout is in American Qwerty.'
+echo "Your iDevice's default password is alpine (yours may be different if you changed it)"
+echo ''
+echo 'Connect a jailbroken iDevice with an internet connection'
+echo ''
+# Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n or 44 for checkra1n
+until [[ $port = '22' || $port = '44' ]]; do
 	read -p 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
 	case $jailbreak in
 		[oO][dD][yY][sS][sS][eE][yY][rR][aA][1iI][nN]|[oO])
-			port="22" ;;
+			port='22' ;;
 		[cC][hH][eE][cC][kK][rR][aA][1iI][nN]|[cC])
-			port="44" ;;
+			port='44' ;;
 		*)
 			echo 'Invalid input!' ;;
 	esac
 done
-cd /root/android-sandcastle/
+
 iproxy 2222 $port > /dev/null 2>&1 &
+
 clear
-echo 'Default password is: alpine'
-echo '/!\ The keyboard layout is in American Qwerty'
-scp -P2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh
-if [[ $? -ne 0 ]]; then
-	echo 'Failed to copy setup script'
-	killall iproxy
-  read -p 'Press enter to quit'
-	exit
+
+message='Copying the setup script to your device'
+whatstep
+if scp -P2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh; then
+	successful
+else
+	failed
 fi
-clear
-echo 'Default password is: alpine'
-echo '/!\ The keyboard layout is in American Qwerty'
-ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"
-if [[ $? -ne 0 ]]; then
-	echo 'Setup failed'
+
+message='Downloading NAND'
+whatstep
+if ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"; then
+	successful
 	killall iproxy
-  read -p 'Press enter to quit'
-	exit
+	echo 'Select "Start Android" to boot into Android'
+	read -p 'Press enter to quit'
+	/usr/bin/menu_projectsandcastle
+else
+	failed
 fi
-clear
-echo 'Setup was successful!'
-killall iproxy
-echo 'Select "Start Android" to boot into Android'
-read -p 'Press enter to quit'
