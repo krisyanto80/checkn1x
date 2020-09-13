@@ -14,7 +14,7 @@ jobs:
 
     - name: Build for amd64
       run: |
-        sed -i "/Exit if user isn't root/aVERSION=$VERSION" build.sh
+        sed -i "/Exit if user isn't root/aVERSION='$(<version)'" build.sh
         sed -i "/Exit if user isn't root/aARCH='amd64'" build.sh
         sudo ./build.sh
 
