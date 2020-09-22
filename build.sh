@@ -8,8 +8,8 @@
 [[ $EUID -ne 0 ]] && { echo 'Please run as root'; exit; }
 
 # Change these variables to modify the version of checkra1n
-checkra1n_amd64="https://assets.checkra.in/downloads/linux/cli/x86_64/607faa865e90e72834fce04468ae4f5119971b310ecf246128e3126db49e3d4f/checkra1n"
-checkra1n_i686="https://assets.checkra.in/downloads/linux/cli/i486/53d45283b5616d9f0daa8a265362b65a33ce503b3088528cc2839544e166d4c6/checkra1n"
+checkra1n_amd64='https://assets.checkra.in/downloads/linux/cli/x86_64/fa08102ba978746ff38fc4c1a0d2e8f231c2cbf79c7ef6d7b504e4683a5b7d05/checkra1n'
+checkra1n_i686='https://assets.checkra.in/downloads/linux/cli/i486/6f3885184dbdb5af4fec8c57e5684f914b9838ce7d6f78db5e9d2687d741b8f1/checkra1n'
 
 cat << EOF
 ############################################

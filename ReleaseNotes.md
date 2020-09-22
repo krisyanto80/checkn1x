@@ -1,5 +1,3 @@
-- Cleaned code
-- Changed compression format of odysseyra1n assets to xz
-- Added colors and ASCII arts
+- Support for checkra1n 0.11.0 beta
 
 **SHA-256:**
