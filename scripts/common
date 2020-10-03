@@ -24,7 +24,7 @@ function failed() {
   message_uncapitalised="${message,}"
   echo -e "${RED}Failed to ${message_uncapitalised//ing/}.${NC}"
   read -p 'Press enter to quit'
-  exit
+  exit 1
 }
 
 function android_logo() {

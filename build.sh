@@ -5,7 +5,7 @@
 # This build script has not been tested on 32-bit systems.
 
 # Exit if user isn't root
-[[ $EUID -ne 0 ]] && { echo 'Please run as root'; exit; }
+[[ $EUID -ne 0 ]] && { echo 'Please run as root'; exit 1; }
 
 # Change these variables to modify the version of checkra1n
 checkra1n_amd64='https://assets.checkra.in/downloads/linux/cli/x86_64/fa08102ba978746ff38fc4c1a0d2e8f231c2cbf79c7ef6d7b504e4683a5b7d05/checkra1n'
