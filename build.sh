@@ -11,14 +11,11 @@
 checkra1n_amd64='https://assets.checkra.in/downloads/linux/cli/x86_64/fa08102ba978746ff38fc4c1a0d2e8f231c2cbf79c7ef6d7b504e4683a5b7d05/checkra1n'
 checkra1n_i686='https://assets.checkra.in/downloads/linux/cli/i486/6f3885184dbdb5af4fec8c57e5684f914b9838ce7d6f78db5e9d2687d741b8f1/checkra1n'
 
-cat << EOF
-############################################
-#                                          #
-#  Welcome to the odysseyn1x build script  #
-#                                          #
-############################################
-
-EOF
+echo -e "\033[0;32m############################################"
+echo -e "\033[0;32m#                                          #\033[0m"
+echo -e "\033[0;32m#  \033[0;36mWelcome to the odysseyn1x build script  \033[0;32m#\033[0m"
+echo -e "\033[0;32m#                                          #\033[0m"
+echo -e "\033[0;32m############################################\033[0m"
 
 # Ask for the version and architecture if variables are empty
 while [[ -z $VERSION ]]; do
@@ -109,10 +106,12 @@ cp scripts/* work/chroot/usr/bin/
 # Download resources for odysseyra1n
 mkdir -p work/chroot/root/odysseyra1n/
 cd work/chroot/root/odysseyra1n/
-curl -L -O 'https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500-ssh.tar.gz'\
-  -O 'https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600-ssh.tar.gz' \
-  -O 'https://github.com/coolstar/odyssey-bootstrap/raw/master/migration' \
-  -O 'https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_1.8.1_iphoneos-arm.deb'
+curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500.tar.gz \
+  -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600.tar.gz \
+  -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1700.tar.gz \
+  -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration \
+  -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_2.0.0b6_iphoneos-arm.deb \
+  -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.swift.libswift_5.0-electra2_iphoneos-arm.deb
 # Change compression format to xz
 gzip -dv ./*.tar.gz
 xz -v9e -T0 ./*.tar
