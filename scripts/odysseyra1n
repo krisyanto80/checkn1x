@@ -20,6 +20,7 @@ read -p 'Press enter to continue'
 
 iproxy 4444 44 >> /dev/null 2>/dev/null &
 
+# Removed ! ${ARM} condition and gzip decompression because we are using xz decompressed archives
 echo '#!/bin/zsh' > odyssey-device-deploy.sh
 echo 'cd /var/root' >> odyssey-device-deploy.sh
 echo 'if [[ -f "/.bootstrapped" ]]; then' >> odyssey-device-deploy.sh
@@ -97,7 +98,8 @@ fi
 
 message='Copying files to your device'
 whatstep
-if sshpass -p 'alpine' scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500.tar.gz bootstrap_1600.tar.gz bootstrap_1700.tar.gz migration org.coolstar.sileo_2.0.0b6_iphoneos-arm.deb org.swift.libswift_5.0-electra2_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/; then
+# Removed .gz extension because where are using xz decrompressed archives
+if sshpass -p 'alpine' scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500.tar bootstrap_1600.tar bootstrap_1700.tar migration org.coolstar.sileo_2.0.0b6_iphoneos-arm.deb org.swift.libswift_5.0-electra2_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/; then
 	successful
 else
 	failed
