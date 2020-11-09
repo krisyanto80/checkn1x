@@ -3,7 +3,10 @@
 <p align="center"><img src="https://gist.githubusercontent.com/raspberryenvoie/586dbef790b752cabda3c50a0a169f6d/raw/6cb00fdb3b683ab387b8daf20c7ebf796608e6c3/odysseyn1x-logo.png" alt="logo"></p>
 
 -------
-[Here](https://gist.githubusercontent.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/b26d359a2e113d49f0f2ec6ee15501512c663d31/odysseyn1x_screenshot.png) is a screenshot of odysseyn1x.
+
+This project aims to be easy to use, to have a nice interface and to support both 32 and 64 bit CPUs.\
+[Here](https://gist.githubusercontent.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/b26d359a2e113d49f0f2ec6ee15501512c663d31/odysseyn1x_screenshot.png) is a screenshot of odysseyn1x.\
+Contributions are gladly appreciated :)
 
 # Usage
 **Make an [iCloud/iTunes backup](https://support.apple.com/en-us/HT203977) before using odysseyn1x, so that you can go back if something goes wrong.**
