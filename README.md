@@ -15,7 +15,7 @@ The `amd64` iso is for 64-bit CPUs (AMD and Intel) and the `i686` one is for 32-
 If you are unsure which one to download, the `amd64` ISO will work in most cases.
 
 1. Download an `.iso` [here](https://github.com/raspberryenvoie/odysseyn1x/releases).
-2. Download [balenaEtcher](https://www.balena.io/etcher/). Rufus may not work, but you can try it.
+2. Download [balenaEtcher](https://www.balena.io/etcher/). If you prefer Rufus, make sure to select GPT partition and DD image mode otherwise it won't work.
 3. Open balenaEtcher and write the `.iso` you downloaded to your USB drive.
 4. Reboot, enter your BIOS's boot menu and select the USB drive.
 
@@ -63,7 +63,7 @@ sync
 and that will reclaim the space for you.
 
 ### Booting Linux
-Select "Project Sandcastle", then "Start Linux".
+Select Project Sandcastle > Start Linux.
 
 # Building odysseyn1x
 
