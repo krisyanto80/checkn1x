@@ -4,39 +4,45 @@ source /usr/bin/common
 export NEWT_COLORS='root=,black border=white,black window=white,black title=white,black textbox=white,black listbox=white,black'
 
 while true; do
-  CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "" 13 40 6 \
+  CHOICE=$(whiptail --nocancel --title "Odysseyn1x" --menu "" 13 40 7 \
     "1" "Checkra1n" \
     "2" "Odysseyra1n" \
     "3" "Project Sandcastle" \
     "4" "Shut down" \
     "5" "Reboot" \
-    "6" "Shell" 3>&1 1>&2 2>&3)
+    "6" "SSH" \
+    "7" "Shell" 3>&1 1>&2 2>&3)
   case $CHOICE in
     1)
       clear
       /usr/bin/checkra1n
       ;;
     2)
+      clear
       /usr/bin/odysseyra1n
       ;;
     3)
       /usr/bin/projectsandcastle_menu
       ;;
     4)
-      clear
-      echo -e "${BLUE}I hope you enjoyed using odysseyn1x, see you soon!${NC}\n"
-      odysseyn1x_logo
-      sleep 0.5
+      {
+        clear
+        odysseyn1x_logo
+      } &
       /usr/sbin/shutdown now
       ;;
     5)
-      clear
-      echo -e "${BLUE}I hope you enjoyed using odysseyn1x, see you soon!${NC}\n"
-      odysseyn1x_logo
-      sleep 0.5
+      {
+        clear
+        odysseyn1x_logo
+      } &
       /usr/sbin/reboot
       ;;
     6)
+      clear
+      /usr/bin/ssh_into_ios
+      ;;
+    7)
       clear
       break
       ;;

@@ -7,12 +7,15 @@ CHOICE=$(whiptail --cancel-button "Back" --title "Project Sandcastle" --menu "" 
   "3" "Start Linux" 3>&1 1>&2 2>&3)
 case $CHOICE in
   1)
+    clear
     /usr/bin/setup_android-sandcastle
     ;;
   2)
+    clear
     /usr/bin/start_android-sandcastle
     ;;
   3)
+    clear
     /usr/bin/start_linux-sandcastle
     ;;
 esac

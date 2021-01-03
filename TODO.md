@@ -1,2 +1,0 @@
-- [] Add an option to connect throught ssh to your iDevice
-- [] Add the ability to build odysseyn1x from an Arch based distro

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Load functions and variables
+source /usr/bin/common
+# Display ssh logo
+ssh_logo
+
+echo 'Connect your iDevice to this computer'
+echo ''
+echo 'The keyboard layout is in American Qwerty.'
+echo "Your iDevice's default password is alpine."
+echo ''
+read -rp 'User: ' user
+read -rp 'Port: ' port
+
+iproxy 2222 "$port" >/dev/null 2>&1 &
+
+clear
+
+message='SSHing into your iDevice'
+whatstep
+ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" "$user"@127.0.0.1 || failed
+killall iproxy

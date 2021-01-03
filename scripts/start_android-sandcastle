@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 # Load functions and variables
 source /usr/bin/common
 cd /root/android-sandcastle/
@@ -24,7 +23,7 @@ whatstep
 if /usr/bin/load-linux Android.lzma dtbpack; then
   successful
   killall checkra1n
-  read -p 'Press enter to quit'
+  read -rp 'Press enter to quit'
 else
   failed
 fi

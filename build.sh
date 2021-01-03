@@ -8,8 +8,8 @@
 [[ $EUID -ne 0 ]] && { echo 'Please run as root'; exit 1; }
 
 # Change these variables to modify the version of checkra1n
-checkra1n_amd64='https://assets.checkra.in/downloads/linux/cli/x86_64/63282886157dd08079c8e41522fdc6d58cfecda783ea8cca79ffc1116f13c355/checkra1n'
-checkra1n_i686='https://assets.checkra.in/downloads/linux/cli/i486/7ea7cc69d58308e2e96bc9f40f63f4f135d3b8fafd49a1bb4f4a849876f49fdb/checkra1n'
+checkra1n_amd64='https://assets.checkra.in/downloads/linux/cli/x86_64/4bf2f7e1dd201eda7d6220350db666f507d6f70e07845b772926083a8a96cd2b/checkra1n'
+checkra1n_i686='https://assets.checkra.in/downloads/linux/cli/i486/7926a90f4d0b73bdc514bd813e1443e4fc579e1674e34622b4bd1002a3322e0f/checkra1n'
 
 echo -e "\033[0;32m############################################"
 echo -e "\033[0;32m#                                          #\033[0m"
@@ -19,13 +19,13 @@ echo -e "\033[0;32m############################################\033[0m"
 
 # Ask for the version and architecture if variables are empty
 while [[ -z $VERSION ]]; do
-  read -p 'What is the version? ' VERSION
+  read -rp 'What is the version? ' VERSION
 done
 echo ''
 until [[ $ARCH = 'amd64' || $ARCH = 'i686' ]]; do
   echo '1 For amd64'
   echo '2 For i686'
-  read -p 'Build for amd64 or for i686? (default: amd64) ' input_arch
+  read -rp 'Build for amd64 or for i686? (default: amd64) ' input_arch
   [[ $input_arch = 1 ]] && ARCH='amd64'
   [[ $input_arch = 2 ]] && ARCH='i686'
   [[ -z $input_arch ]] && ARCH='amd64'

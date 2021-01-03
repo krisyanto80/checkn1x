@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 # Load functions and variables
 source /usr/bin/common
 cd /root/android-sandcastle/
@@ -14,7 +13,7 @@ echo 'Connect a jailbroken iDevice with an internet connection'
 echo ''
 # Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n or 44 for checkra1n
 until [[ $port = '22' || $port = '44' ]]; do
-	read -p 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
+	read -rp 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
 	case $jailbreak in
 		[oO][dD][yY][sS][sS][eE][yY][rR][aA][1iI][nN]|[oO])
 			port='22' ;;
@@ -43,7 +42,7 @@ if ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" ro
 	successful
 	killall iproxy
 	echo 'Select "Start Android" to boot into Android'
-	read -p 'Press enter to quit'
+	read -rp 'Press enter to quit'
 	/usr/bin/menu_projectsandcastle
 else
 	failed
