@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # Load functions and variables
-source /usr/bin/common
+. /usr/bin/common
 # Display ssh logo
 ssh_logo
 
@@ -16,7 +16,6 @@ iproxy 2222 "$port" >/dev/null 2>&1 &
 
 clear
 
-message='SSHing into your iDevice'
-whatstep
-ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" "$user"@127.0.0.1 || failed
+whatstep 'SSHing into your iDevice'
+ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" "$user"@127.0.0.1 || failed 'SSH into your iDevice'
 killall iproxy

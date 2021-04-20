@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # Load functions and variables
-source /usr/bin/common
+. /usr/bin/common
 cd /root/android-sandcastle/
 
 # Show ASCII art
@@ -12,7 +12,7 @@ echo ''
 echo 'Connect a jailbroken iDevice with an internet connection'
 echo ''
 # Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n or 44 for checkra1n
-until [[ $port = '22' || $port = '44' ]]; do
+until [ "$port" = '22' ] || [ "$port" = '44' ]; do
 	read -rp 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
 	case $jailbreak in
 		[oO][dD][yY][sS][sS][eE][yY][rR][aA][1iI][nN]|[oO])
@@ -28,22 +28,20 @@ iproxy 2222 $port > /dev/null 2>&1 &
 
 clear
 
-message='Copying the setup script to your device'
-whatstep
+whatstep 'Copying the setup script to your device'
 if scp -P2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh; then
-	successful
+	successful 'copying the setup script to your device'
 else
-	failed
+	failed 'copy the setup script to your device'
 fi
 
-message='Downloading NAND'
-whatstep
+whatstep 'Downloading NAND'
 if ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"; then
-	successful
+	successful 'downloading NAND'
 	killall iproxy
 	echo 'Select "Start Android" to boot into Android'
-	read -rp 'Press enter to quit'
+	read -rp 'Press enter to quit' null
 	/usr/bin/menu_projectsandcastle
 else
-	failed
+	failed 'download NAND'
 fi

@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # Load functions and variables
-source /usr/bin/common
+. /usr/bin/common
 cd /root/linux-sandcastle/
 
 # Show ASCII art
@@ -23,7 +23,7 @@ whatstep
 if /usr/bin/load-linux Linux.lzma dtbpack; then
   successful
   killall checkra1n
-  read -rp 'Press enter to quit'
+  read -rp 'Press enter to quit' null
 else
   failed
 fi
