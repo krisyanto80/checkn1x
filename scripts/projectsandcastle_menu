@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 export NEWT_COLORS='root=,black border=white,black window=white,black title=white,black textbox=white,black listbox=white,black'
 
-CHOICE=$(whiptail --cancel-button "Back" --title "Project Sandcastle" --menu "" 13 40 3 \
-  "1" "Setup Android" \
-  "2" "Start Android" \
-  "3" "Start Linux" 3>&1 1>&2 2>&3)
-case $CHOICE in
+whiptail_height="$(($(tput lines) - 6))"
+whiptail_width="$(($(tput cols) - 20))"
+
+CHOICE="$(whiptail --cancel-button 'Back' --title 'Project Sandcastle' --menu '' $whiptail_height $whiptail_width 3 \
+  '1' 'Setup Android' \
+  '2' 'Start Android' \
+  '3' 'Start Linux' 3>&1 1>&2 2>&3)"
+case "$CHOICE" in
   1)
     clear
     /usr/bin/setup_android-sandcastle
