@@ -1,6 +1,6 @@
 #!/bin/bash
 # Load functions and variables
-source /usr/bin/common
+. /usr/bin/common
 cd /root/odysseyra1n/
 
 # Show ASCII art
@@ -86,33 +86,30 @@ echo 'rm odyssey-device-deploy.sh' >> odyssey-device-deploy.sh
 clear
 
 if ! ls ./*.tar > /dev/null 2>&1; then
-	message='Extracting files'
-	whatstep
+	whatstep 'Extracting files'
 	if xz -vd ./*.tar.xz; then
-		successful
+		successful 'extracting files'
 	else
-		failed
+		failed 'extract files'
 	fi
 fi
 
-message='Copying files to your device'
-whatstep
+whatstep 'Copying files to your device'
 # Removed .gz extension because where are using xz decrompressed archives
 if sshpass -p 'alpine' scp -P4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500.tar bootstrap_1600.tar bootstrap_1700.tar migration org.coolstar.sileo_2.0.0b6_iphoneos-arm.deb org.swift.libswift_5.0-electra2_iphoneos-arm.deb odyssey-device-deploy.sh root@127.0.0.1:/var/root/; then
-	successful
+	successful 'copying files to your device'
 else
-	failed
+	failed 'copy files to your device'
 fi
 
-message='Installing Procursus bootstrap and Sileo on your device'
-whatstep
+whatstep 'Installing Procursus bootstrap and Sileo on your device'
 if sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "zsh /var/root/odyssey-device-deploy.sh"; then
-	successful
+	successful 'installing Procursus bootstrap and Sileo on your device'
 	killall iproxy
 	echo 'Open Sileo, do all the updates and install the libhooker package.'
 	echo 'Then re-jailbreak your device.'
-	echo -e "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device throught SSH using the default password.${NC}"
+	echo -e "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device throught SSH using the default password.${NORMAL}"
 	read -p 'Press enter to quit'
 else
-	failed
+	failed 'install Procursus bootstrap and Sileo on your device'
 fi
