@@ -9,8 +9,8 @@
 }
 
 # Change these variables to modify the version of checkra1n
-CHECKRA1N_AMD64='https://assets.checkra.in/downloads/linux/cli/x86_64/4bf2f7e1dd201eda7d6220350db666f507d6f70e07845b772926083a8a96cd2b/checkra1n'
-CHECKRA1N_I686='https://assets.checkra.in/downloads/linux/cli/i486/7926a90f4d0b73bdc514bd813e1443e4fc579e1674e34622b4bd1002a3322e0f/checkra1n'
+CHECKRA1N_AMD64='https://assets.checkra.in/downloads/linux/cli/x86_64/845bd19fb857e5546ba312e768ab42e8aeab7a34470b07f60a9892e92fe8273e/checkra1n'
+CHECKRA1N_I686='https://assets.checkra.in/downloads/linux/cli/i486/9f497cbb9ecffec91f5c534c53911c433a8cfee71e6e577aaa4a640f0ddb7cd4/checkra1n'
 
 echo "\033[0;32m############################################"
 echo "\033[0;32m#                                          #\033[0m"
