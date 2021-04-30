@@ -5,7 +5,7 @@
 -------
 
 This project aims to be easy to use, to have a nice interface and to support both 32 and 64 bit CPUs.\
-[Here](https://gist.githubusercontent.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/b26d359a2e113d49f0f2ec6ee15501512c663d31/odysseyn1x_screenshot.png) is a screenshot of odysseyn1x.\
+[Here](https://gist.github.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/5c264d7b0d440162072c102aa203abfa20ba4a96/odysseyn1x_screenshot.png) is a screenshot of odysseyn1x.\
 Contributions are gladly appreciated :)
 
 # Usage
