@@ -20,7 +20,7 @@ read -p 'Press enter to continue'
 iproxy 4444 44 >> /dev/null 2>/dev/null &
 
 # Removed ! ${ARM} condition and gzip decompression because we are using xz decompressed archives
-echo '#!/bin/zsh' > odyssey-device-deploy.sh
+echo '#!/bin/bash' > odyssey-device-deploy.sh
 echo 'cd /var/root' >> odyssey-device-deploy.sh
 echo 'if [[ -f "/.bootstrapped" ]]; then' >> odyssey-device-deploy.sh
 echo 'mkdir -p /odyssey && mv migration /odyssey' >> odyssey-device-deploy.sh
@@ -103,7 +103,7 @@ else
 fi
 
 whatstep 'Installing Procursus bootstrap and Sileo on your device'
-if sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "zsh /var/root/odyssey-device-deploy.sh"; then
+if sshpass -p 'alpine' ssh -p4444 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "bash /var/root/odyssey-device-deploy.sh"; then
 	successful 'installing Procursus bootstrap and Sileo on your device'
 	killall iproxy
 	echo 'Open Sileo, do all the updates and install the libhooker package.'
