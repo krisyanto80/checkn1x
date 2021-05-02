@@ -168,6 +168,7 @@ EOF
 # Configure grub
 cat << "EOF" > work/iso/boot/grub/grub.cfg
 insmod all_video
+echo ''
 echo '  ___   __| |_   _ ___ ___  ___ _   _ _ __ / |_  __'
 echo ' / _ \ / _` | | | / __/ __|/ _ \ | | | `_ \| \ \/ /'
 echo '| (_) | (_| | |_| \__ \__ \  __/ |_| | | | | |>  < '
