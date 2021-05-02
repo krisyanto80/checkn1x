@@ -1,3 +1,3 @@
-- Updated the odysseyra1n script (for iOS 14.5)
+- Updated the odysseyra1n script to fix #25
 
 **SHA-256:**
