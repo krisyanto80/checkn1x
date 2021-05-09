@@ -1,41 +1,48 @@
 #!/bin/sh
-# Made with <3 by raspberryenvoie 
+# Made with <3 by raspberryenvoie
 # odysseyn1x build script (a fork of asineth/checkn1x)
 
 # Exit if user isn't root
 [ "$(id -u)" -ne 0 ] && {
-  echo 'Please run as root'
-  exit 1
+    echo 'Please run as root'
+    exit 1
 }
 
 # Change these variables to modify the version of checkra1n
 CHECKRA1N_AMD64='https://assets.checkra.in/downloads/linux/cli/x86_64/845bd19fb857e5546ba312e768ab42e8aeab7a34470b07f60a9892e92fe8273e/checkra1n'
 CHECKRA1N_I686='https://assets.checkra.in/downloads/linux/cli/i486/9f497cbb9ecffec91f5c534c53911c433a8cfee71e6e577aaa4a640f0ddb7cd4/checkra1n'
 
-echo "\033[0;32m############################################"
-echo "\033[0;32m#                                          #\033[0m"
-echo "\033[0;32m#  \033[0;36mWelcome to the odysseyn1x build script  \033[0;32m#\033[0m"
-echo "\033[0;32m#                                          #\033[0m"
-echo "\033[0;32m############################################\033[0m"
-echo ''
+GREEN="$(tput setaf 2)"
+BLUE="$(tput setaf 6)"
+NORMAL="$(tput sgr0)"
+cat << EOF
+${GREEN}############################################${NORMAL}
+${GREEN}#                                          #${NORMAL}
+${GREEN}#  ${BLUE}Welcome to the odysseyn1x build script  ${GREEN}#${NORMAL}
+${GREEN}#                                          #${NORMAL}
+${GREEN}############################################${NORMAL}
+
+EOF
 # Ask for the version and architecture if variables are empty
 while [ -z "$VERSION" ]; do
-  read -rp 'Version: ' VERSION
+    echo -n 'Version: '
+    read -r VERSION
 done
 until [ "$ARCH" = 'amd64' ] || [ "$ARCH" = 'i686' ]; do
-  echo '1 amd64'
-  echo '2 i686'
-  read -rp 'Which architecture? amd64 (default) or i686 ' input_arch
-  [ "$input_arch" = 1 ] && ARCH='amd64'
-  [ "$input_arch" = 2 ] && ARCH='i686'
-  [ -z "$input_arch" ] && ARCH='amd64'
+    echo '1 amd64'
+    echo '2 i686'
+    echo -n 'Which architecture? amd64 (default) or i686 '
+    read -r input_arch
+    [ "$input_arch" = 1 ] && ARCH='amd64'
+    [ "$input_arch" = 2 ] && ARCH='i686'
+    [ -z "$input_arch" ] && ARCH='amd64'
 done
 
 # Delete old build
 {
-  umount work/chroot/proc
-  umount work/chroot/sys
-  umount work/chroot/dev
+    umount work/chroot/proc
+    umount work/chroot/sys
+    umount work/chroot/dev
 } > /dev/null 2>&1
 rm -rf work/
 
@@ -45,19 +52,19 @@ start_time="$(date -u +%s)"
 # Install dependencies to build odysseyn1x
 apt-get update
 apt-get install -y --no-install-recommends wget debootstrap grub-pc-bin \
-  grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl \
-  libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
+    grub-efi-amd64-bin mtools squashfs-tools xorriso ca-certificates curl \
+    libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
 
 if [ "$ARCH" = 'amd64' ]; then
-  REPO_ARCH='amd64' # Debian's 64-bit repos are "amd64"
-  KERNEL_ARCH='amd64' # Debian's 32-bit kernels are suffixed "amd64"
+    REPO_ARCH='amd64' # Debian's 64-bit repos are "amd64"
+    KERNEL_ARCH='amd64' # Debian's 32-bit kernels are suffixed "amd64"
 else
-  # Install depencies to build odysseyn1x for i686
-  dpkg --add-architecture i386
-  apt-get update
-  apt install -y --no-install-recommends libusb-1.0-0-dev:i386 gcc-multilib
-  REPO_ARCH='i386' # Debian's 32-bit repos are "i386"
-  KERNEL_ARCH='686' # Debian's 32-bit kernels are suffixed "-686"
+    # Install depencies to build odysseyn1x for i686
+    dpkg --add-architecture i386
+    apt-get update
+    apt install -y --no-install-recommends libusb-1.0-0-dev:i386 gcc-multilib
+    REPO_ARCH='i386' # Debian's 32-bit repos are "i386"
+    KERNEL_ARCH='686' # Debian's 32-bit kernels are suffixed "-686"
 fi
 
 # Configure the base system
@@ -73,7 +80,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install requiered packages
 apt-get install -y --no-install-recommends linux-image-$KERNEL_ARCH live-boot \
-  systemd systemd-sysv usbmuxd libusbmuxd-tools openssh-client sshpass psmisc xz-utils whiptail
+  systemd systemd-sysv usbmuxd libusbmuxd-tools openssh-client sshpass xz-utils whiptail
 # Remove apt as it won't be usable anymore
 apt purge apt -y --allow-remove-essential
 EOF
@@ -81,25 +88,25 @@ EOF
 sed -i 's/COMPRESS=gzip/COMPRESS=xz/' work/chroot/etc/initramfs-tools/initramfs.conf
 chroot work/chroot update-initramfs -u
 (
-  cd work/chroot
-  # Empty some directories to make the system smaller
-  rm -f etc/mtab \
-    etc/fstab \
-    etc/ssh/ssh_host* \
-    root/.wget-hsts \
-    root/.bash_history
-  rm -rf var/log/* \
-    var/cache/* \
-    var/backups/* \
-    var/lib/apt/* \
-    var/lib/dpkg/* \
-    usr/share/doc/* \
-    usr/share/man/* \
-    usr/share/info/* \
-    usr/share/icons/* \
-    usr/share/locale/* \
-    usr/share/zoneinfo/* \
-    usr/lib/modules/*
+    cd work/chroot
+    # Empty some directories to make the system smaller
+    rm -f etc/mtab \
+        etc/fstab \
+        etc/ssh/ssh_host* \
+        root/.wget-hsts \
+        root/.bash_history
+    rm -rf var/log/* \
+        var/cache/* \
+        var/backups/* \
+        var/lib/apt/* \
+        var/lib/dpkg/* \
+        usr/share/doc/* \
+        usr/share/man/* \
+        usr/share/info/* \
+        usr/share/icons/* \
+        usr/share/locale/* \
+        usr/share/zoneinfo/* \
+        usr/lib/modules/*
 )
 
 # Copy scripts
@@ -108,52 +115,51 @@ cp scripts/* work/chroot/usr/bin/
 # Download resources for odysseyra1n
 mkdir -p work/chroot/root/odysseyra1n/
 (
-  cd work/chroot/root/odysseyra1n/
-  curl -L -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1500.tar.gz \
-    -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1600.tar.gz \
-    -O https://github.com/coolstar/odyssey-bootstrap/raw/master/bootstrap_1700.tar.gz \
-    -O https://github.com/coolstar/odyssey-bootstrap/raw/master/migration \
-    -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.coolstar.sileo_2.0.0b6_iphoneos-arm.deb \
-    -O https://github.com/coolstar/odyssey-bootstrap/raw/master/org.swift.libswift_5.0-electra2_iphoneos-arm.deb
-  # Change compression format to xz
-  gzip -dv ./*.tar.gz
-  xz -v9e -T0 ./*.tar
+    cd work/chroot/root/odysseyra1n/
+    curl -sL -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1500.tar.gz \
+        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1600.tar.gz \
+        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1700.tar.gz \
+        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/org.coolstar.sileo_2.0.3_iphoneos-arm.deb \
+        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/org.swift.libswift_5.0-electra2_iphoneos-arm.deb
+    # Change compression format to xz
+    gzip -dv ./*.tar.gz
+    xz -v9e -T0 ./*.tar
 )
 
 (
-  cd work/chroot/root/
-  # Download resources for Android Sandcastle
-  curl -L -O 'https://assets.checkra.in/downloads/sandcastle/dff60656db1bdc6a250d3766813aa55c5e18510694bc64feaabff88876162f3f/android-sandcastle.zip'
-  unzip android-sandcastle.zip
-  rm -f android-sandcastle.zip
-  (
-    cd android-sandcastle/
-    rm -f iproxy ./*.dylib load-linux.mac ./*.sh README.txt
-  )
+    cd work/chroot/root/
+    # Download resources for Android Sandcastle
+    curl -L -O 'https://assets.checkra.in/downloads/sandcastle/dff60656db1bdc6a250d3766813aa55c5e18510694bc64feaabff88876162f3f/android-sandcastle.zip'
+    unzip android-sandcastle.zip
+    rm -f android-sandcastle.zip
+    (
+        cd android-sandcastle/
+        rm -f iproxy ./*.dylib load-linux.mac ./*.sh README.txt
+    )
 
-  # Download resources for Linux Sandcastle
-  curl -L -O 'https://assets.checkra.in/downloads/sandcastle/0175ae56bcba314268d786d1239535bca245a7b126d62a767e12de48fd20f470/linux-sandcastle.zip'
-  unzip linux-sandcastle.zip
-  rm -f linux-sandcastle.zip
-  (
-    cd linux-sandcastle/
-    rm -f load-linux.mac README.txt
-  )
+    # Download resources for Linux Sandcastle
+    curl -L -O 'https://assets.checkra.in/downloads/sandcastle/0175ae56bcba314268d786d1239535bca245a7b126d62a767e12de48fd20f470/linux-sandcastle.zip'
+    unzip linux-sandcastle.zip
+    rm -f linux-sandcastle.zip
+    (
+        cd linux-sandcastle/
+        rm -f load-linux.mac README.txt
+    )
 )
 
 (
-  cd work/chroot/usr/bin/
-  curl -L -O 'https://raw.githubusercontent.com/corellium/projectsandcastle/master/loader/load-linux.c'
-  # Build load-linux.c and download checkra1n for the corresponding architecture
-  if [ "$ARCH" = 'amd64' ]; then
-    gcc load-linux.c -o load-linux -lusb-1.0
-    curl -L -o checkra1n "$CHECKRA1N_AMD64"
-  else
-    gcc -m32 load-linux.c -o load-linux -lusb-1.0
-    curl -L -o checkra1n "$CHECKRA1N_I686"
-  fi
-  rm -f load-linux.c
-  chmod +x load-linux checkra1n
+    cd work/chroot/usr/bin/
+    curl -L -O 'https://raw.githubusercontent.com/corellium/projectsandcastle/master/loader/load-linux.c'
+    # Build load-linux.c and download checkra1n for the corresponding architecture
+    if [ "$ARCH" = 'amd64' ]; then
+        gcc load-linux.c -o load-linux -lusb-1.0
+        curl -L -o checkra1n "$CHECKRA1N_AMD64"
+    else
+        gcc -m32 load-linux.c -o load-linux -lusb-1.0
+        curl -L -o checkra1n "$CHECKRA1N_I686"
+    fi
+    rm -f load-linux.c
+    chmod +x load-linux checkra1n
 )
 
 # Configure autologin
@@ -196,10 +202,10 @@ cp work/chroot/vmlinuz work/iso/boot
 cp work/chroot/initrd.img work/iso/boot
 mksquashfs work/chroot work/iso/live/filesystem.squashfs -noappend -e boot -comp xz -Xbcj x86
 grub-mkrescue -o "odysseyn1x-$VERSION-$ARCH.iso" work/iso \
-  --compress=xz \
-  --fonts='' \
-  --locales='' \
-  --themes=''
+    --compress=xz \
+    --fonts='' \
+    --locales='' \
+    --themes=''
 
 end_time="$(date -u +%s)"
 elapsed_time="$((end_time - start_time))"
