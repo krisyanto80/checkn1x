@@ -7,22 +7,26 @@ PURPLE="$(tput setaf 5)"
 NORMAL="$(tput sgr0)"
 BOLD="$(tput bold)"
 
-whatstep() {
-  echo "${BLUE}${1}...${NORMAL}"
+blue_echo() {
+  echo "${BLUE}${1}${NORMAL}"
 }
 
-successful() {
-  echo "${GREEN}Done ${1}.${NORMAL}"
+green_echo() {
+  echo "${GREEN}${1}${NORMAL}"
 }
 
-failed() {
-  {
-    killall iproxy
-    killall checkra1n
-  }  > /dev/null 2>&1
-  echo "${RED}Failed to ${1}.${NORMAL}"
-  read -rp 'Press enter to quit' null
-  exit 1
+red_echo() {
+  echo "${RED}${1}${NORMAL}"
+}
+
+prompt() {
+  echo -n "$1"
+  read -r "$2"
+}
+
+enter_to_quit() {
+  echo -n 'Press enter to quit'
+  read -r
 }
 
 center_text() {
@@ -103,10 +107,10 @@ odysseyra1n_logo() {
 
 ssh_logo() {
   is_colored=false
-  center_text '         _     '
-  center_text ' ___ ___| |__  '
-  center_text "/ __/ __| '_ \ "
-  center_text '\__ \__ \ | | |'
-  center_text '|___/___/_| |_|'
+  center_text ' ____ ____  _   _'
+  center_text '/ ___/ ___|| | | |'
+  center_text '\___ \___ \| |_| |'
+  center_text ' ___) |__) |  _  |'
+  center_text '|____/____/|_| |_|'
   echo ''
 }

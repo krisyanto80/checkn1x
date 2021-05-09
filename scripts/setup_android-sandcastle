@@ -6,14 +6,17 @@ cd /root/android-sandcastle/
 # Show ASCII art
 android_logo
 
-echo 'The keyboard layout is in American Qwerty.'
-echo "Your iDevice's default password is alpine."
-echo ''
-echo 'Connect a jailbroken iDevice with an internet connection'
-echo ''
+cat << "EOF"
+Connect a jailbroken iDevice with an internet connection
+
+The keyboard layout is in American Qwerty.
+Your iDevice's default password is alpine.
+
+EOF
+
 # Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n or 44 for checkra1n
-until [ "$port" = '22' ] || [ "$port" = '44' ]; do
-	read -rp 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
+until [ "$port" = 22 ] || [ "$port" = 44 ]; do
+	prompt 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
 	case $jailbreak in
 		[oO][dD][yY][sS][sS][eE][yY][rR][aA][1iI][nN]|[oO])
 			port='22' ;;
@@ -24,24 +27,24 @@ until [ "$port" = '22' ] || [ "$port" = '44' ]; do
 	esac
 done
 
-iproxy 2222 $port > /dev/null 2>&1 &
+IPROXY=$(iproxy 28605 $port >/dev/null 2>&1 & echo $!)
 
 clear
 
-whatstep 'Copying the setup script to your device'
-if scp -P2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh; then
-	successful 'copying the setup script to your device'
+blue_echo 'Copying the setup script to your device...'
+if scp -qP28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh; then
+	green_echo 'Done copying the setup script to your device.'
 else
-	failed 'copy the setup script to your device'
+	red_echo 'Failed to copy the setup script to your device.'
 fi
 
-whatstep 'Downloading NAND'
-if ssh -p2222 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"; then
-	successful 'downloading NAND'
-	killall iproxy
+blue_echo 'Downloading NAND...'
+if ssh -qp28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"; then
+	green_echo 'Done downloading NAND.'
 	echo 'Select "Start Android" to boot into Android'
-	read -rp 'Press enter to quit' null
-	/usr/bin/menu_projectsandcastle
 else
-	failed 'download NAND'
+	red_echo 'Failed to download NAND.'
 fi
+kill "$IPROXY"
+enter_to_quit
+/usr/bin/menu_projectsandcastle

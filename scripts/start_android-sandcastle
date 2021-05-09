@@ -6,11 +6,11 @@ cd /root/android-sandcastle/
 # Show ASCII art
 android_logo
 
-/usr/bin/checkra1n -cp > pongo_shell.log 2>&1 &
+CHECKRA1N="$(CHECKRA1N_LOG_PATH=pongo_shell.log /usr/bin/checkra1n -cp)"
 echo 'Please put your device into DFU mode'
 sleep 1
 while true; do
-  if grep 'Booting...' pongo_shell.log > /dev/null 2>&1; then
+  if grep -q 'Booting...' pongo_shell.log; then
     echo 'Pongo loaded. Give it a second'
     sleep 2
     break
@@ -18,12 +18,11 @@ while true; do
   sleep 1
 done
 sleep 5
-message='Starting Android'
-whatstep
+blue_echo 'Starting Android...'
 if /usr/bin/load-linux Android.lzma dtbpack; then
-  successful
-  killall checkra1n
-  read -rp 'Press enter to quit' null
+  green_echo 'Done starting Android.'
 else
-  failed
+  red_echo 'Failed to start Android.'
 fi
+enter_to_quit
+kill "$CHECKRA1N"
