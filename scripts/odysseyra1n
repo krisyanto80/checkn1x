@@ -18,7 +18,7 @@ echo "Before you begin: If you're currently jailbroken with a different bootstra
 echo "Then jailbreak using checkra1n but don't install Cydia."
 echo 'Connect your iDevice to this computer'
 echo "Press enter to continue."
-read -r
+read -r null
 
 # * Removed check if curl and iproxy are installed
 # * Removed "${ARM}" != yes condition
@@ -99,7 +99,7 @@ blue_echo "Copying resources to your device..."
 # * Added check if command is successful
 # * Added sshpass -p 'alpine'
 # * Removed .gz extension because where are using xz decrompressed archives
-if sshpass -p 'alpine' scp -qP28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500.tar.gz \
+if sshpass -p 'alpine' scp -qP28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" bootstrap_1500.tar \
 	bootstrap_1600.tar bootstrap_1700.tar \
 	org.coolstar.sileo_2.0.3_iphoneos-arm.deb \
 	org.swift.libswift_5.0-electra2_iphoneos-arm.deb \

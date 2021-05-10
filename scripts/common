@@ -26,7 +26,7 @@ prompt() {
 
 enter_to_quit() {
   echo -n 'Press enter to quit'
-  read -r
+  read -r null
 }
 
 center_text() {
