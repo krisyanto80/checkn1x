@@ -13,6 +13,7 @@ echo "Odysseyra1n Installation Script"
 echo "(C) 2021, CoolStar. All Rights Reserved"
 echo ""
 echo 'This script has been modified to work on odysseyn1x.'
+echo ''
 echo "Before you begin: If you're currently jailbroken with a different bootstrap installed, you will need to Reset System via the Loader app before running this script."
 # * Two following lines were added
 echo "Then jailbreak using checkra1n but don't install Cydia."
