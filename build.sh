@@ -189,7 +189,7 @@ EOF
 
 # Change hostname and configure .bashrc
 echo 'odysseyn1x' > work/chroot/etc/hostname
-echo "export ODYSSEYN1X_VERSION=$VERSION" > work/chroot/root/.bashrc
+echo "export ODYSSEYN1X_VERSION='$VERSION'" > work/chroot/root/.bashrc
 echo '/usr/bin/odysseyn1x_menu' >> work/chroot/root/.bashrc
 
 rm -f work/chroot/etc/resolv.conf
