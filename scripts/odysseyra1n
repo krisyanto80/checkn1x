@@ -123,5 +123,4 @@ else
 fi
 # * Removed cd "$CURRENTDIR" and rm -rf "$ODYSSEYDIR"
 # * Removed kill "$IPROXY", handled by enter_to_quit
-echo "${BOLD}Change the mobile/root passwords to prevent the possibility of unsavory people remotely logging into your device through SSH using the default password.${NORMAL}"
 enter_to_quit

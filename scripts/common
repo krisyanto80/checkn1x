@@ -5,7 +5,6 @@ BLUE="$(tput setaf 6)"
 YELLOW="$(tput setaf 3)"
 PURPLE="$(tput setaf 5)"
 NORMAL="$(tput sgr0)"
-BOLD="$(tput bold)"
 
 blue_echo() {
   echo "${BLUE}${1}${NORMAL}"
