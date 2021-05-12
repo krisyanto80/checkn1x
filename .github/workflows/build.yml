@@ -1,6 +1,9 @@
 name: Build odysseyn1x
 
-on: push
+on:
+  push:
+    paths:
+      - 'build.sh'
 
 jobs:
 
