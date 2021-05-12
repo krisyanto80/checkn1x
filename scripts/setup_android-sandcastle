@@ -17,7 +17,7 @@ EOF
 # Ask if the user uses odysseyra1n or checkra1n and set port to 22 for odysseyra1n or 44 for checkra1n
 until [ "$port" = 22 ] || [ "$port" = 44 ]; do
 	prompt 'Are you using odysseyra1n or checkra1n [O/c] ' jailbreak
-	case $jailbreak in
+	case "$jailbreak" in
 		[oO][dD][yY][sS][sS][eE][yY][rR][aA][1iI][nN]|[oO])
 			port='22' ;;
 		[cC][hH][eE][cC][kK][rR][aA][1iI][nN]|[cC])
@@ -27,7 +27,7 @@ until [ "$port" = 22 ] || [ "$port" = 44 ]; do
 	esac
 done
 
-IPROXY=$(iproxy 28605 $port >/dev/null 2>&1 & echo $!)
+IPROXY=$(iproxy 28605 "$port" >/dev/null 2>&1 & echo $!)
 
 clear
 

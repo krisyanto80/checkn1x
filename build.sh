@@ -25,13 +25,13 @@ ${GREEN}############################################${NORMAL}
 EOF
 # Ask for the version and architecture if variables are empty
 while [ -z "$VERSION" ]; do
-    echo -n 'Version: '
+    printf 'Version: '
     read -r VERSION
 done
 until [ "$ARCH" = 'amd64' ] || [ "$ARCH" = 'i686' ]; do
     echo '1 amd64'
     echo '2 i686'
-    echo -n 'Which architecture? amd64 (default) or i686 '
+    printf 'Which architecture? amd64 (default) or i686 '
     read -r input_arch
     [ "$input_arch" = 1 ] && ARCH='amd64'
     [ "$input_arch" = 2 ] && ARCH='i686'

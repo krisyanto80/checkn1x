@@ -14,7 +14,7 @@ EOF
 prompt 'User: ' user
 prompt 'Port: ' port
 
-IPROXY=$(iproxy 28605 $port >/dev/null 2>&1 & echo $!)
+IPROXY=$(iproxy 28605 "$port" >/dev/null 2>&1 & echo $!)
 
 clear
 

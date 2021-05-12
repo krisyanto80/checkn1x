@@ -1,6 +1,20 @@
 #!/bin/sh
 # Load functions and variables
 . /usr/bin/common
+
+case "$1" in
+  linux)
+  PROJECT_SANDCASTLE='Linux'
+  ;;
+  android)
+  PROJECT_SANDCASTLE='Android'
+  ;;
+  *)
+  echo "Specify an argument: 'linux' or 'android'"
+  exit 1
+  ;;
+esac
+
 cd /root/android-sandcastle/
 
 # Show ASCII art
@@ -18,10 +32,10 @@ while true; do
   sleep 1
 done
 sleep 5
-blue_echo 'Starting Android...'
-if /usr/bin/load-linux Android.lzma dtbpack; then
-  done_green_echo 'Done starting Android.'
+blue_echo "Starting $PROJECT_SANDCASTLE..."
+if /usr/bin/load-linux ${PROJECT_SANDCASTLE}.lzma dtbpack; then
+  done_green_echo "Done starting $PROJECT_SANDCASTLE."
   enter_to_quit
 else
-  failed_echo 'Failed to start Android.'
+  failed_echo "Failed to start $PROJECT_SANDCASTLE."
 fi

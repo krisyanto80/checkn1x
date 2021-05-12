@@ -15,10 +15,10 @@ case "$CHOICE" in
     ;;
   2)
     clear
-    /usr/bin/start_android-sandcastle
+    /usr/bin/start_project_sandcastle android
     ;;
   3)
     clear
-    /usr/bin/start_linux-sandcastle
+    /usr/bin/start_project_sandcastle linux
     ;;
 esac
