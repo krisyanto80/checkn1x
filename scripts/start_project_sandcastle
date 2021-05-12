@@ -18,9 +18,9 @@ esac
 cd /root/android-sandcastle/
 
 # Show ASCII art
-android_logo
+"${1}"_logo
 
-CHECKRA1N="$(CHECKRA1N_LOG_PATH=pongo_shell.log /usr/bin/checkra1n -cp)"
+CHECKRA1N="$(/usr/bin/checkra1n -cp > pongo_shell.log 2>&1 & echo $!)"
 echo 'Please put your device into DFU mode'
 sleep 1
 while true; do
@@ -34,7 +34,7 @@ done
 sleep 5
 blue_echo "Starting $PROJECT_SANDCASTLE..."
 if /usr/bin/load-linux ${PROJECT_SANDCASTLE}.lzma dtbpack; then
-  done_green_echo "Done starting $PROJECT_SANDCASTLE."
+  done_echo "Done starting $PROJECT_SANDCASTLE."
   enter_to_quit
 else
   failed_echo "Failed to start $PROJECT_SANDCASTLE."

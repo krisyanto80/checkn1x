@@ -83,7 +83,7 @@ clear
 if ! ls ./*.tar > /dev/null 2>&1; then
 	blue_echo 'Extracting resources...'
 	if xz -vd ./*.tar.xz; then
-		done_green_echo 'Done extracting resources.'
+		done_echo 'Done extracting resources.'
 	else
 		failed 'Failed to extract resources.'
 	fi
@@ -105,7 +105,7 @@ if sshpass -p 'alpine' scp -qP28605 -o "StrictHostKeyChecking no" -o "UserKnownH
 	org.swift.libswift_5.0-electra2_iphoneos-arm.deb \
 	odysseyra1n-install.bash \
 	root@127.0.0.1:/var/root/; then
-	done_green_echo 'Done copying resources to your device.'
+	done_echo 'Done copying resources to your device.'
 else
 	failed_echo 'Failed to copy resources to your device.'
 fi
@@ -116,7 +116,7 @@ blue_echo "Bootstrapping your device..."
 # * Added check if command is successful
 # * Added sshpass -p 'alpine'
 if sshpass -p 'alpine' ssh -qp28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "bash /var/root/odysseyra1n-install.bash"; then
-	done_green_echo 'Done bootstrapping your device.'
+	done_echo 'Done bootstrapping your device.'
 else
 	failed_echo 'Failed to bootstrap your device.'
 fi
