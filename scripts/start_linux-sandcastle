@@ -20,9 +20,8 @@ done
 sleep 5
 blue_echo 'Starting Linux...'
 if /usr/bin/load-linux Linux.lzma dtbpack; then
-  green_echo 'Done starting Linux.'
+  done_green_echo 'Done starting Linux.'
+  enter_to_quit
 else
-  red_echo 'Failed to start Linux.'
+  failed_echo 'Failed to start Linux.'
 fi
-enter_to_quit
-kill "$CHECKRA1N"

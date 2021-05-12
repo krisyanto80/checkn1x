@@ -33,18 +33,17 @@ clear
 
 blue_echo 'Copying the setup script to your device...'
 if scp -qP28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" isetup root@127.0.0.1:/tmp/setup.sh; then
-	green_echo 'Done copying the setup script to your device.'
+	done_green_echo 'Done copying the setup script to your device.'
 else
-	red_echo 'Failed to copy the setup script to your device.'
+	failed_echo 'Failed to copy the setup script to your device.'
 fi
 
 blue_echo 'Downloading NAND...'
 if ssh -qp28605 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "chmod 755 /tmp/setup.sh && /tmp/setup.sh"; then
-	green_echo 'Done downloading NAND.'
+	done_green_echo 'Done downloading NAND.'
 	echo 'Select "Start Android" to boot into Android'
+	enter_to_quit
+	/usr/bin/menu_projectsandcastle
 else
-	red_echo 'Failed to download NAND.'
+	failed_echo 'Failed to download NAND.'
 fi
-kill "$IPROXY"
-enter_to_quit
-/usr/bin/menu_projectsandcastle

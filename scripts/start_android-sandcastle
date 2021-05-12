@@ -20,9 +20,8 @@ done
 sleep 5
 blue_echo 'Starting Android...'
 if /usr/bin/load-linux Android.lzma dtbpack; then
-  green_echo 'Done starting Android.'
+  done_green_echo 'Done starting Android.'
+  enter_to_quit
 else
-  red_echo 'Failed to start Android.'
+  failed_echo 'Failed to start Android.'
 fi
-enter_to_quit
-kill "$CHECKRA1N"

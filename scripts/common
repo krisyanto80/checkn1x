@@ -11,21 +11,24 @@ blue_echo() {
   echo "${BLUE}${1}${NORMAL}"
 }
 
-green_echo() {
+done_echo() {
   echo "${GREEN}${1}${NORMAL}"
 }
 
-red_echo() {
+failed_echo() {
   echo "${RED}${1}${NORMAL}"
+  enter_to_quit
+	exit 1
 }
 
 prompt() {
-  echo -n "$1"
+  printf '%s' "$1"
   read -r "$2"
 }
 
 enter_to_quit() {
-  echo -n 'Press enter to quit'
+  kill "$IPROXY" "$CHECKRA1N" > /dev/null 2>&1
+  printf 'Press enter to quit'
   read -r null
 }
 
