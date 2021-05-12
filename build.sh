@@ -9,8 +9,8 @@
 }
 
 # Change these variables to modify the version of checkra1n
-CHECKRA1N_AMD64='https://assets.checkra.in/downloads/linux/cli/x86_64/845bd19fb857e5546ba312e768ab42e8aeab7a34470b07f60a9892e92fe8273e/checkra1n'
-CHECKRA1N_I686='https://assets.checkra.in/downloads/linux/cli/i486/9f497cbb9ecffec91f5c534c53911c433a8cfee71e6e577aaa4a640f0ddb7cd4/checkra1n'
+CHECKRA1N_AMD64='https://assets.checkra.in/downloads/linux/cli/x86_64/dac9968939ea6e6bfbdedeb41d7e2579c4711dc2c5083f91dced66ca397dc51d/checkra1n'
+CHECKRA1N_I686='https://assets.checkra.in/downloads/linux/cli/i486/77779d897bf06021824de50f08497a76878c6d9e35db7a9c82545506ceae217e/checkra1n'
 
 GREEN="$(tput setaf 2)"
 BLUE="$(tput setaf 6)"
