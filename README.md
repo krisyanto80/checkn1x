@@ -3,8 +3,8 @@
 </p>
 <br>
 <p align="center">
-<strong>Linux-based distro that lets you install <a href="https://checkra.in/">checkra1n</a>, <a href="https://github.com/coolstar/Odyssey-bootstrap">odysseyra1n</a> and <a href="https://projectsandcastle.org/">Project Sandcastle</a>.</strong><br>
-    It aims to be easy to use, to have a nice interface and to support both 32 and 64 bit CPUs.
+<strong>Linux distro that lets you install <a href="https://checkra.in/">checkra1n</a>, <a href="https://github.com/coolstar/Odyssey-bootstrap">odysseyra1n</a> and <a href="https://projectsandcastle.org/">Project Sandcastle</a>.</strong><br>
+    It aims to be easy to use, have a nice interface and support 32 and 64 bit CPUs.
 </p>
 <p align="center">
     <a href="#usage">Usage</a> •
