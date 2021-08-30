@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-    <img src="https://gist.github.com/raspberryenvoie/f62b36b4418a160596a7965e58671f5e/raw/6e9e245c1e4f35108c90b529ca70e8119faf00fd/odysseyn1x_screenshot.png" alt="screenshot" width="650">
+    <img src="https://i.imgur.com/RqlVpan.png" alt="screenshot" width="650">
 </p>
 
 -------
@@ -90,3 +90,4 @@ Any contribution is always welcome :)
 - [Corellium](https://github.com/corellium) for [Project Sandcastle](https://projectsandcastle.org)
 - [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an ISO with odysseyra1n
 - [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle (Android and Linux for the iPhone)
+- [Everyone else who contributed to the project](https://github.com/raspberryenvoie/odysseyn1x/graphs/contributors)
