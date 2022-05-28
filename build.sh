@@ -119,7 +119,7 @@ mkdir -p work/chroot/root/odysseyra1n/
     curl -sL -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1500.tar.gz \
         -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1600.tar.gz \
         -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/bootstrap_1700.tar.gz \
-        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/org.coolstar.sileo_2.2.3_iphoneos-arm.deb \
+        -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/org.coolstar.sileo_2.3_iphoneos-arm.deb \
         -O https://github.com/coolstar/Odyssey-bootstrap/raw/master/org.swift.libswift_5.0-electra2_iphoneos-arm.deb
     # Change compression format to xz
     gzip -dv ./*.tar.gz
