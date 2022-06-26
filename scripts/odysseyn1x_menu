@@ -7,14 +7,15 @@ whiptail_height="$(($(tput lines) - 6))"
 whiptail_width="$(($(tput cols) - 20))"
 
 while true; do
-  CHOICE="$(whiptail --nocancel --title "Odysseyn1x $ODYSSEYN1X_VERSION" --menu '' $whiptail_height $whiptail_width 7 \
+  CHOICE="$(whiptail --nocancel --title "Odysseyn1x $ODYSSEYN1X_VERSION" --menu '' $whiptail_height $whiptail_width 8 \
     '1' 'Checkra1n' \
     '2' 'Odysseyra1n' \
     '3' 'Project Sandcastle' \
-    '4' 'SSH' \
-    '5' 'Shell' \
-    '6' 'Shut down' \
-    '7' 'Reboot' 3>&1 1>&2 2>&3)"
+    '4' 'Linux on Apple' \
+    '5' 'SSH' \
+    '6' 'Shell' \
+    '7' 'Shut down' \
+    '8' 'Reboot' 3>&1 1>&2 2>&3)"
   case "$CHOICE" in
     1)
       clear
@@ -28,19 +29,22 @@ while true; do
       /usr/bin/projectsandcastle_menu
       ;;
     4)
-      clear
-      /usr/bin/ssh_into_ios
+      /usr/bin/linux-apple_menu
       ;;
     5)
       clear
-      break
+      /usr/bin/ssh_into_ios
       ;;
     6)
+      clear
+      break
+      ;;
+    7)
       odysseyn1x_logo
       sleep 2
       /usr/sbin/shutdown now
       ;;
-    7)
+    8)
       odysseyn1x_logo
       sleep 2
       /usr/sbin/reboot
