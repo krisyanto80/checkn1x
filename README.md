@@ -3,13 +3,14 @@
 </p>
 <br>
 <p align="center">
-<strong>Linux distro that lets you install <a href="https://checkra.in/">checkra1n</a>, <a href="https://github.com/coolstar/Odyssey-bootstrap">odysseyra1n</a> and <a href="https://projectsandcastle.org/">Project Sandcastle</a>.</strong><br>
+<strong>Linux distro that lets you install <a href="https://checkra.in/">checkra1n</a>, <a href="https://github.com/coolstar/Odyssey-bootstrap">odysseyra1n</a>, <a href="https://projectsandcastle.org/">Project Sandcastle</a> as well as starting <a href="https://github.com/SoMainline/linux-apple-resources">Linux on Apple</a>.</strong><br>
     It aims to be easy to use, have a nice interface and support 32 and 64 bit CPUs.
 </p>
 <p align="center">
     <a href="#usage">Usage</a> •
     <a href="#odysseyra1n">Odysseyra1n</a> •
     <a href="#project-sandcastle">Project Sandcastle</a> •
+    <a href="#building-odysseyn1x">Linux on Apple</a> •
     <a href="#building-odysseyn1x">Building odysseyn1x</a> •
     <a href="#contributing">Contributing</a> •
     <a href="#credits">Credits</a>
@@ -69,6 +70,19 @@ sync
 ## Booting Linux
 Select `Project Sandcastle` > `Start Linux`.
 
+# Linux on Apple
+## What's Linux on Apple
+Linux on Apple is another project to port Linux to 64-bit checkm8 apple devices. Linux on Apple is currently in alpha.
+Please note that all T2 and HomePod devices, as well as the Apple TV 4K are not supported.
+
+- [More inforamtion](https://github.com/SoMainline/linux-apple-resources)
+- [Kernel source](https://github.com/konradybcio/linux-apple)
+- [ADT Collection](https://github.com/SoMainline/adt_collection)
+- [pongoOS fork](https://github.com/konradybcio/pongoOS)
+
+## Booting Linux
+Select `Linux on Apple`, then, depending on your device, select `Start Linux (A7-A8)` or `Start Linux (A9-A11)`.
+
 # Building odysseyn1x
 
 To change the version of checkra1n, edit `CRSOURCE_amd64` and `CRSOURCE_i686`.\
@@ -90,4 +104,5 @@ Any contribution is always welcome :)
 - [Corellium](https://github.com/corellium) for [Project Sandcastle](https://projectsandcastle.org)
 - [u/GOGO307](https://www.reddit.com/user/GOGO307/) for the concept of an ISO with odysseyra1n
 - [MyCatCondo](https://github.com/MyCatCondo) for suggesting to integrate Project Sandcastle (Android and Linux for the iPhone)
+- [Konard Dybcio](https://twitter.com/konradybcio) and [Ivaylo Ivanov](https://twitter.com/ivoszbg) for [Linux on Apple](https://github.com/SoMainline/linux-apple-resources)
 - [Everyone else who contributed to the project](https://github.com/raspberryenvoie/odysseyn1x/graphs/contributors)
