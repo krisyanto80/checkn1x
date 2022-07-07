@@ -1,0 +1,29 @@
+#!/bin/bash
+# Load functions and variables
+. /usr/bin/common
+cd /root/linux-apple
+export NEWT_COLORS='root=,black border=white,black window=white,black title=white,black textbox=white,black listbox=white,black'
+
+whiptail_height="7"
+whiptail_width="$(($(tput cols) - 20))"
+
+if [ "$1" = "" ]; then
+  >&2 echo "Specify an argument: '4k' or '16k'"
+  exit 1
+fi
+cd /root/linux-apple/
+
+echo 'Please put your device into DFU mode'
+# idk why but checkra1n and pongoterm does not like being redirected
+/usr/bin/checkra1n -cEpk Pongo.bin
+echo "Pongo loaded. Give it a second."
+echo "/send dtbpack
+fdt
+/send debug_initrd.img
+ramdisk
+linux_cmdline PMOS_NO_OUTPUT_REDIRECT
+/send Image-${1}.lzma
+bootl" | pongoterm -n
+echo "Starting Linux (Ignore LIBUSB_ERROR_IO above)..."
+sleep 2
+enter_to_quit

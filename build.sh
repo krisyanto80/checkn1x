@@ -162,6 +162,33 @@ mkdir -p work/chroot/root/odysseyra1n/
     chmod +x load-linux checkra1n
 )
 
+# Configure linux-apple
+(
+    cd work/chroot/usr/bin
+    # Build pongoterm.c for the corresponding architecture
+    # load-linux.c does not work as there is no baked in initramfs
+    curl -L -O https://github.com/konradybcio/pongoOS/raw/master/scripts/pongoterm.c
+    if [ "$ARCH" = 'amd64' ]; then
+        gcc -Wall -Wextra -Os -m64 pongoterm.c -DUSE_LIBUSB=1 -o pongoterm -lusb-1.0 -lpthread
+    else
+        gcc -Wall -Wextra -Os -m32 pongoterm.c -DUSE_LIBUSB=1 -o pongoterm -lusb-1.0 -lpthread
+    fi
+    rm -f pongoterm.c
+)
+
+# Download resources for linux-apple
+(
+    cd work/chroot/root
+    mkdir linux-apple
+    cd linux-apple
+    # Download DeviceTree, 4K, 16K kernels and initramfs.
+    curl -L -OOOOO \
+      https://cdn.discordapp.com/attachments/672628720497852459/990614138554318939/debug_initrd.img \
+      https://cdn.discordapp.com/attachments/672628720497852459/990614138814349342/Image-4k.lzma \
+      https://cdn.discordapp.com/attachments/672628720497852459/990614139430899752/Image-16k.lzma \
+      https://cdn.discordapp.com/attachments/672628720497852459/990614139925852160/dtbpack \
+      https://cdn.discordapp.com/attachments/672628720497852459/990620143803588689/Pongo.bin
+)
 # Configure autologin
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf

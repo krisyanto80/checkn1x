@@ -1,0 +1,20 @@
+#!/bin/sh
+
+export NEWT_COLORS='root=,black border=white,black window=white,black title=white,black textbox=white,black listbox=white,black'
+
+whiptail_height="$(($(tput lines) - 6))"
+whiptail_width="$(($(tput cols) - 20))"
+
+CHOICE="$(whiptail --cancel-button 'Back' --title 'Project Sandcastle' --menu 'Linux apple supports all A7-A11 devices except T2, HomePod and Apple TV 4K devices' $whiptail_height $whiptail_width 3 \
+  '1' 'Start Linux (A7-A8)' \
+  '2' 'Start Linux (A9-A11)' 3>&1 1>&2 2>&3)"
+case "$CHOICE" in
+  1)
+    clear
+    /usr/bin/start_linux-apple 4k
+    ;;
+  2)
+    clear
+    /usr/bin/start_linux-apple 16k
+    ;;
+esac

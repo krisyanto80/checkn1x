@@ -1,3 +1,3 @@
-- Updated the odysseyra1n script
+- Supports booting Linux via linux-apple
 
 **SHA-256:**
