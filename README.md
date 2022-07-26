@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-    <img src="https://i.imgur.com/RqlVpan.png" alt="screenshot" width="650">
+    <img src="https://gist.github.com/raspberryenvoie/c2e1423c7fe02cff68c392427a47de04/raw/fe481f35bec02e91f0392f5ff3f086ff8b4298aa/odysseyn1x_screenshot.png" alt="screenshot" width="650">
 </p>
 
 -------
