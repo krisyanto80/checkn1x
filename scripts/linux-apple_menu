@@ -5,9 +5,9 @@ export NEWT_COLORS='root=,black border=white,black window=white,black title=whit
 whiptail_height="$(($(tput lines) - 6))"
 whiptail_width="$(($(tput cols) - 20))"
 
-CHOICE="$(whiptail --cancel-button 'Back' --title 'Project Sandcastle' --menu 'Linux apple supports all A7-A11 devices except T2, HomePod and Apple TV 4K devices' $whiptail_height $whiptail_width 3 \
+CHOICE="$(whiptail --cancel-button 'Back' --title 'Project Sandcastle' --menu 'Linux apple supports all A7-A11 devices except A9, T2, HomePod and Apple TV 4K devices' $whiptail_height $whiptail_width 3 \
   '1' 'Start Linux (A7-A8)' \
-  '2' 'Start Linux (A9-A11)' 3>&1 1>&2 2>&3)"
+  '2' 'Start Linux (A9X-A11)' 3>&1 1>&2 2>&3)"
 case "$CHOICE" in
   1)
     clear

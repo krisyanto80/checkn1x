@@ -183,11 +183,11 @@ mkdir -p work/chroot/root/odysseyra1n/
     cd linux-apple
     # Download DeviceTree, 4K, 16K kernels and initramfs.
     curl -L -OOOOO \
-      https://cdn.discordapp.com/attachments/672628720497852459/990614138554318939/debug_initrd.img \
+      https://cdn.discordapp.com/attachments/672628720497852459/1010845916309241936/debug_initrd.img \
       https://cdn.discordapp.com/attachments/672628720497852459/990614138814349342/Image-4k.lzma \
       https://cdn.discordapp.com/attachments/672628720497852459/990614139430899752/Image-16k.lzma \
       https://cdn.discordapp.com/attachments/672628720497852459/990614139925852160/dtbpack \
-      https://cdn.discordapp.com/attachments/672628720497852459/990620143803588689/Pongo.bin
+      https://cdn.discordapp.com/attachments/672628720497852459/1008915797055389736/Pongo.bin
 )
 # Configure autologin
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d

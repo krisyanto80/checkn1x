@@ -21,9 +21,9 @@ echo "/send dtbpack
 fdt
 /send debug_initrd.img
 ramdisk
-linux_cmdline PMOS_NO_OUTPUT_REDIRECT
+linux_cmdline PMOS_NO_OUTPUT_REDIRECT panic=5
 /send Image-${1}.lzma
 bootl" | pongoterm -n
-echo "Starting Linux (Ignore LIBUSB_ERROR_IO above)..."
+echo "Starting Linux (Ignore red errors above)..."
 sleep 2
 enter_to_quit
