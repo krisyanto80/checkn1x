@@ -69,7 +69,7 @@ fi
 
 # Configure the base system
 mkdir -p work/chroot work/iso/live work/iso/boot/grub
-debootstrap --variant=minbase --arch="$REPO_ARCH" stable work/chroot 'http://deb.debian.org/debian/'
+debootstrap --variant=minbase --arch="$REPO_ARCH" stable work/chroot 'http://mirror.xtom.com.hk/debian/'
 mount --bind /proc work/chroot/proc
 mount --bind /sys work/chroot/sys
 mount --bind /dev work/chroot/dev
@@ -183,11 +183,11 @@ mkdir -p work/chroot/root/odysseyra1n/
     cd linux-apple
     # Download DeviceTree, 4K, 16K kernels and initramfs.
     curl -L -OOOOO \
-      https://cdn.discordapp.com/attachments/672628720497852459/1010845916309241936/debug_initrd.img \
-      https://cdn.discordapp.com/attachments/672628720497852459/990614138814349342/Image-4k.lzma \
-      https://cdn.discordapp.com/attachments/672628720497852459/990614139430899752/Image-16k.lzma \
-      https://cdn.discordapp.com/attachments/672628720497852459/990614139925852160/dtbpack \
-      https://cdn.discordapp.com/attachments/672628720497852459/1008915797055389736/Pongo.bin
+        https://cdn.discordapp.com/attachments/672628720497852459/1023930400365625344/netboot_debug_initrd.img \
+        https://cdn.discordapp.com/attachments/672628720497852459/1024873433567350794/dtbpack \
+        https://cdn.discordapp.com/attachments/672628720497852459/1024873433982578718/Image.lzma-16k \
+        https://cdn.discordapp.com/attachments/672628720497852459/1024873434334892063/Image.lzma-4k \
+        https://cdn.discordapp.com/attachments/672628720497852459/1025036488414593085/Pongo.bin
 )
 # Configure autologin
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
