@@ -19,11 +19,11 @@ echo 'Please put your device into DFU mode'
 echo "Pongo loaded. Give it a second."
 echo "/send dtbpack
 fdt
-/send debug_initrd.img
+/send netboot_debug_initrd.img
 ramdisk
-linux_cmdline PMOS_NO_OUTPUT_REDIRECT
-/send Image-${1}.lzma
+linux_cmdline PMOS_NO_OUTPUT_REDIRECT panic=5
+/send Image.lzma-${1}
 bootl" | pongoterm -n
-echo "Starting Linux (Ignore LIBUSB_ERROR_IO above)..."
+echo "Starting Linux (Ignore red errors above)..."
 sleep 2
 enter_to_quit
