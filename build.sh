@@ -189,6 +189,13 @@ mkdir -p work/chroot/root/odysseyra1n/
         https://cdn.discordapp.com/attachments/672628720497852459/1024873434334892063/Image.lzma-4k \
         https://cdn.discordapp.com/attachments/672628720497852459/1025036488414593085/Pongo.bin
 )
+
+# Download A8X/A9X resources
+(
+    cd work/chroot/root
+    curl -L -O https://cdn.discordapp.com/attachments/672628720497852459/1025048286916251668/PongoConsolidated.bin
+)
+
 # Configure autologin
 mkdir -p work/chroot/etc/systemd/system/getty@tty1.service.d
 cat << EOF > work/chroot/etc/systemd/system/getty@tty1.service.d/override.conf

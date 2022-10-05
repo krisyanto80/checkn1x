@@ -32,6 +32,10 @@ The `amd64` iso is for 64-bit CPUs (AMD and Intel) and the `i686` one is for 32-
 3. Open balenaEtcher and write the `.iso` you downloaded to your USB drive.
 4. Reboot, enter your BIOS's boot menu and select the USB drive.
 
+# Checkra1n (A8X/A9X)
+
+Due to a checkra1n bug, the checkra1n option will give `Found corrupting kerninfo` after booting into the checkra1n apple logo screen on A8X/A9X devices. Use this option to workaround this bug.
+
 # Odysseyra1n
 ## What's odysseyra1n
 Odysseyra1n lets you install on a checkra1ned device
