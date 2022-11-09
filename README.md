@@ -77,9 +77,9 @@ Select `Project Sandcastle` > `Start Linux`.
 # Linux on Apple
 ## What's Linux on Apple
 Linux on Apple is another project to port Linux to 64-bit checkm8 apple devices. Linux on Apple is currently in alpha.
-Please note that all T2 and HomePod devices, as well as the Apple TV 4K are not supported.
+Please note that all T2 and HomePod devices, as well as the Apple TV 4K are not supported
 
-- [More inforamtion](https://github.com/SoMainline/linux-apple-resources)
+- [More information](https://github.com/SoMainline/linux-apple-resources)
 - [Kernel source](https://github.com/konradybcio/linux-apple)
 - [ADT Collection](https://github.com/SoMainline/adt_collection)
 - [pongoOS fork](https://github.com/konradybcio/pongoOS)
